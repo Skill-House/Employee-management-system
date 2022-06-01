@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DataAccess.Entities
+namespace EmployeeManagement_Web
 {
-    public partial class Alumnus
+    public partial class Employee
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -13,9 +13,7 @@ namespace DataAccess.Entities
         public string Gender { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public int? AddressId { get; set; }
-        public string YearOfGraduation { get; set; }
-        public DateTime? DateCreated { get; set; }
-        public DateTime? DateModified { get; set; }
+        public string DateCreated { get; set; }
+        public string DateModified { get; set; }
     }
 }
