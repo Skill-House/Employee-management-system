@@ -8,12 +8,13 @@ namespace EmployeeManagement_Web.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class CompanyController: Controller
+    public class CompanyController : Controller
     {
         private readonly CompanyBusiness companyBusiness;
 
         public CompanyController()
         {
+            _logger = logger;
             companyBusiness = new CompanyBusiness();
         }
 
@@ -36,6 +37,14 @@ namespace EmployeeManagement_Web.Controllers
             return Ok(result);
         }
 
+        [HttpPost(Name = "SaveCompany")]
+        public async Task<HttpStatusCode> SaveCompany(Company company)
+        {
+            return await companyBusiness.SaveCompanyAsync(company);
+        }
+
+
 
     }
 }
+

@@ -21,6 +21,10 @@ namespace EmployeeManagement_Business
         {
             return await companyRepository.GetByID(id);
         }
+            public async Task<HttpStatusCode> SaveCompanyAsync(Company company)
+            {
+                await companyRepositorycs.Create(company);
+                return HttpStatusCode.OK;
 
         public async Task<HttpStatusCode> DeleteByID(int id)
         {
@@ -28,5 +32,12 @@ namespace EmployeeManagement_Business
             return HttpStatusCode.OK;
 
         }
+            public async Task<HttpStatusCode> DeleteCompanyAsync(int Id)
+            {
+                await companyRepositorycs.Delete(Id);
+                return HttpStatusCode.OK;
+            }
+
     }
 }
+
