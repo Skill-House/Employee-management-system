@@ -5,46 +5,39 @@ using System.Net;
 namespace EmployeeManagement_Business
 {
     public class CompanyBusiness
-        {
-            private readonly CompanyRepositorycs companyRepositorycs;
-        public CompanyBusiness()
-            {
-                this.companyRepositorycs = new CompanyRepositorycs();
-            }
+    {
+        private readonly CompanyRepository companyRepository;
 
-        public CompanyRepositorycs GetCompanyRepositorycs()
+        public CompanyBusiness()
         {
-            return companyRepositorycs;
+            this.companyRepository = new CompanyRepository();
+        }
+        public async Task<List<Company>> GetAllCompaniesAsync()
+        {
+            return await companyRepository.GetAllCompaniesAsync();
         }
 
-        public async Task<List<Company>> GetAllCompanyAsync()
-            {
-                return await companyRepositorycs.GetAllCompanyAsync();
-            }
-            public async Task<Company> GetCompanyAsync(int CompanyId)
-            {
-                var alumnus = await companyRepositorycs.GetById(CompanyId);
-                return alumnus;
-
-            }
+        public async Task<Company> GetByID(int id)
+        {
+            return await companyRepository.GetByID(id);
+        }
             public async Task<HttpStatusCode> SaveCompanyAsync(Company company)
             {
                 await companyRepositorycs.Create(company);
                 return HttpStatusCode.OK;
 
-            }
-            public async Task<HttpStatusCode> UpdateCompanyAsync(Company company)
-            {
-                await companyRepositorycs.Update(company);
-                return HttpStatusCode.OK;
+        public async Task<HttpStatusCode> DeleteByID(int id)
+        {
+            var result = companyRepository.DeleteByID(id);
+            return HttpStatusCode.OK;
 
-            }
+        }
             public async Task<HttpStatusCode> DeleteCompanyAsync(int Id)
             {
                 await companyRepositorycs.Delete(Id);
                 return HttpStatusCode.OK;
             }
 
-        }
+    }
 }
 

@@ -5,48 +5,46 @@ using System.Net;
 
 namespace EmployeeManagement_Web.Controllers
 {
+
     [ApiController]
     [Route("[controller]")]
     public class CompanyController : Controller
     {
-
-        private readonly ILogger<CompanyController> _logger;
         private readonly CompanyBusiness companyBusiness;
 
-        public CompanyController(ILogger<CompanyController> logger)
+        public CompanyController()
         {
             _logger = logger;
             companyBusiness = new CompanyBusiness();
         }
 
         [HttpGet("GetAllCompany")]
-        public async Task<List<Company>> GetAllCompany()
+        public async Task<List<Company>>GetAllCompany()
         {
-            return await companyBusiness.GetAllCompanyAsync();
+            return await companyBusiness.GetAllCompaniesAsync();
         }
 
-        [HttpGet(Name = "GetCompany")]
-        public async Task<IActionResult> GetById(int CompanyId)
+        [HttpGet("GetByID")]
+        public async Task<Company> GetByID(int id)
         {
-            var alumnus = await companyBusiness.GetCompanyAsync(CompanyId);
-            return Ok(alumnus);
+            return await companyBusiness.GetByID(id);
         }
+
+        [HttpDelete("DeleteByID")]
+        public async Task<IActionResult> DeleteByID(int id)
+        {
+            var result = companyBusiness.DeleteByID(id);
+            return Ok(result);
+        }
+
         [HttpPost(Name = "SaveCompany")]
         public async Task<HttpStatusCode> SaveCompany(Company company)
         {
             return await companyBusiness.SaveCompanyAsync(company);
         }
-        [HttpPut(Name = "UpdateCompany")]
-        public async Task<HttpStatusCode> UpdateCompany(Company company)
-        {
-            return await companyBusiness.UpdateCompanyAsync(company);
-        }
-        [HttpDelete(Name = "DeeleteCompany")]
-        public async Task<IActionResult> DeleteById(int CompanyId)
-        {
-            var alumnus = await companyBusiness.DeleteCompanyAsync(CompanyId);
-            return Ok(alumnus);
-        }
+
+
+
     }
 }
 
