@@ -14,7 +14,6 @@ namespace EmployeeManagement_Web.Controllers
 
         public CompanyController()
         {
-            _logger = logger;
             companyBusiness = new CompanyBusiness();
         }
 
@@ -33,7 +32,7 @@ namespace EmployeeManagement_Web.Controllers
         [HttpDelete("DeleteByID")]
         public async Task<IActionResult> DeleteByID(int id)
         {
-            var result = companyBusiness.DeleteByID(id);
+            var result = await companyBusiness.DeleteByID(id);
             return Ok(result);
         }
 
