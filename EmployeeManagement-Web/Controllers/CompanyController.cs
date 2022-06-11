@@ -1,4 +1,5 @@
-﻿using EmployeeManagement_Business;
+﻿using EmployeeManagement.Data.Models;
+using EmployeeManagement_Business;
 using EmployeeManagement_Repository.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -37,7 +38,7 @@ namespace EmployeeManagement_Web.Controllers
         }
 
         [HttpPost(Name = "SaveCompany")]
-        public async Task<HttpStatusCode> SaveCompany(Company company)
+        public async Task<HttpStatusCode> SaveCompany(CompanyModel company)
         {
             return await companyBusiness.SaveCompanyAsync(company);
         }

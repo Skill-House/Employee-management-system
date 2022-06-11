@@ -25,7 +25,7 @@ namespace EmployeeManagement_Repository.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-VONPPPE;Database=EmployeeManagement;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=.;Database=EmployeeManagement;Trusted_Connection=True;");
             }
         }
 
@@ -51,6 +51,12 @@ namespace EmployeeManagement_Repository.Entities
                     .IsRequired()
                     .HasMaxLength(12)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Companies)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Company_Employee");
             });
 
             modelBuilder.Entity<Employee>(entity =>
