@@ -26,7 +26,7 @@ namespace EmployeeManagement_Repository
             return dbContext.Companies.FirstOrDefault(a=>a.CompanyId == id);
         }
 
-        public  async Task Create(Company company)
+        public async Task Create(Company company)
         {
             dbContext.Companies.Add(company);
             await dbContext.SaveChangesAsync();
