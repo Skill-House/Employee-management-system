@@ -1,4 +1,5 @@
-﻿using EmployeeManagement_Repository;
+﻿using EmployeeManagement.Data.Models;
+using EmployeeManagement_Repository;
 using EmployeeManagement_Repository.Entities;
 using System.Net;
 
@@ -21,9 +22,14 @@ namespace EmployeeManagement_Business
         {
             return await companyRepository.GetByID(id);
         }
-        public async Task<HttpStatusCode> SaveCompanyAsync(Company company)
+        public async Task<HttpStatusCode> SaveCompanyAsync(CompanyModel company)
         {
-            await companyRepository.Create(company);
+            Company cmpn = new Company();
+            cmpn.CompanyName = company.CompanyName;
+            cmpn.CompanyAddress = company.CompanyAddress;
+            cmpn.CompanyPhone = company.CompanyPhone;
+            cmpn.EmployeeId = company.EmployeeId;
+            await companyRepository.Create(cmpn);
             return HttpStatusCode.OK;
         }
 
