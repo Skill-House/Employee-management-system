@@ -19,7 +19,7 @@ namespace EmployeeManagement_Web.Controllers
         }
 
         [HttpGet("GetAllCompany")]
-        public async Task<List<Company>>GetAllCompany()
+        public async Task<List<CompanyModel>>GetAllCompany()
         {
             return await companyBusiness.GetAllCompaniesAsync();
         }
