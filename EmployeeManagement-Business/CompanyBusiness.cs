@@ -39,6 +39,12 @@ namespace EmployeeManagement_Business
             return HttpStatusCode.OK;
 
         }
+        public async Task<HttpStatusCode> UpdateCompanyAsync(UpdateCompanyModel company)
+        {
+            await companyRepository.Update(company);
+            return HttpStatusCode.OK;
+
+        }
     }
 }
 
