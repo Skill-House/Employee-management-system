@@ -19,6 +19,7 @@ namespace EmployeeManagement_Repository.Entities
 
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -97,6 +98,17 @@ namespace EmployeeManagement_Repository.Entities
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);
