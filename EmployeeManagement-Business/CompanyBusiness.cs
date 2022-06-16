@@ -18,7 +18,7 @@ namespace EmployeeManagement_Business
             return await companyRepository.GetAllCompaniesAsync();
         }
 
-        public async Task<Company> GetByID(int id)
+        public async Task<GetCompanyByIdModel> GetByID(int id)
         {
             return await companyRepository.GetByID(id);
         }

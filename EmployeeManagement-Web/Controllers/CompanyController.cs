@@ -25,7 +25,7 @@ namespace EmployeeManagement_Web.Controllers
         }
 
         [HttpGet("GetByID")]
-        public async Task<Company> GetByID(int id)
+        public async Task<GetCompanyByIdModel> GetByID(int id)
         {
             return await companyBusiness.GetByID(id);
         }
