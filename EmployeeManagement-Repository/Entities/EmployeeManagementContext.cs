@@ -17,7 +17,7 @@ namespace EmployeeManagement_Repository.Entities
         {
         }
 
-        public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -33,9 +33,9 @@ namespace EmployeeManagement_Repository.Entities
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<CompanyDetail>(entity =>
+            modelBuilder.Entity<Company>(entity =>
             {
-                entity.HasKey(e => e.CompanyId);
+                entity.ToTable("Company");
 
                 entity.Property(e => e.CompanyAddress)
                     .IsRequired()
@@ -51,6 +51,12 @@ namespace EmployeeManagement_Repository.Entities
                     .IsRequired()
                     .HasMaxLength(12)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Companies)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Company_Employee");
             });
 
             modelBuilder.Entity<Employee>(entity =>
