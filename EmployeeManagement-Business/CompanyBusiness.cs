@@ -13,7 +13,7 @@ namespace EmployeeManagement_Business
         {
             this.companyRepository = new CompanyRepository();
         }
-        public async Task<List<Company>> GetAllCompaniesAsync()
+        public async Task<List<CompanyModel>> GetAllCompaniesAsync()
         {
             return await companyRepository.GetAllCompaniesAsync();
         }
