@@ -15,4 +15,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
 		</PackageReference>
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\EmployeeMangement.Data\EmployeeMangement.Data.csproj" />
+	</ItemGroup>
 </Project>

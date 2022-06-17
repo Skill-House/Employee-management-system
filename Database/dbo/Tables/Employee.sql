@@ -7,6 +7,11 @@
     [Phone]        VARCHAR (50) NOT NULL,
     [DateCreated]  VARCHAR (50) NOT NULL,
     [DateModified] VARCHAR (50) NOT NULL,
+    [CompanyId]    INT          NULL,
     CONSTRAINT [PK_Employee] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
+
+
 

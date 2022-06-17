@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EmployeeManagement-Repository\EmployeeManagement.Repository.csproj" />
+    <ProjectReference Include="..\EmployeeMangement.Data\EmployeeMangement.Data.csproj" />
   </ItemGroup>
 
 </Project>

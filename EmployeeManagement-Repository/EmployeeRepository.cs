@@ -13,6 +13,11 @@ namespace EmployeeManagement_Repository
         {
             return dbContext.Employees.ToList();
         }
+        public async Task<Employee> GetById(int Id)
+        {
+            var employee = dbContext.Employees.FirstOrDefault(e => e.Id == Id);
+            return employee;
+        }
         public async Task Create(Employee employee)
         {
             dbContext.Employees.Add(employee);
@@ -29,11 +34,7 @@ namespace EmployeeManagement_Repository
             }
         }
 
-        public async Task<Employee> GetById(int Id)
-        {
-            var employee = dbContext.Employees.FirstOrDefault(e => e.Id == Id);
-            return employee;
-        }
+       
 
         public async Task Delete(int employeeId)
         {

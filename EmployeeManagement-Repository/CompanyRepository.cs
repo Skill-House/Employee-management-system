@@ -1,10 +1,6 @@
 ﻿using EmployeeManagement_Repository.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using EmployeeMangement.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagement_Repository
 {
@@ -16,14 +12,44 @@ namespace EmployeeManagement_Repository
         {
             this.dbContext = new EmployeeManagementContext();
         }
-        public async Task<List<Company>> GetAllCompaniesAsync()
+        public async Task<List<CompanyModel>> GetAllCompaniesAsync()
         {
-            return  dbContext.Companies.ToList();
+           
+            var result = dbContext.Companies.Include(x => x.Employee).ToList();
+            var companyDetails = new List<CompanyModel>();
+            foreach (var company in result)
+            {
+                companyDetails.Add(new CompanyModel()
+                {
+                    EmployeeId = company.EmployeeId,
+                    CompanyName = company.CompanyName,
+                    CompanyAddress = company.CompanyAddress,
+                    CompanyPhone = company.CompanyPhone,
+                });
+            }
+            return companyDetails;
         }
 
         public async Task<Company> GetByID(int id)
         {
             return dbContext.Companies.FirstOrDefault(a=>a.CompanyId == id);
+        }
+        public async Task Create(Company company)
+        {
+            dbContext.Companies.Add(company);
+            await dbContext.SaveChangesAsync();
+        }
+        public async Task Update(CompanyModel company)
+        {
+            var existingCompany = dbContext.Companies.FirstOrDefault(a => a.CompanyId == company.CompanyId);
+            if (existingCompany != null)
+            {
+                existingCompany.CompanyId = company.CompanyId;
+                existingCompany.CompanyName = company.CompanyName;
+                existingCompany.CompanyAddress = company.CompanyAddress;
+                existingCompany.CompanyPhone = company.CompanyPhone;
+                await this.dbContext.SaveChangesAsync();
+            }
         }
 
 

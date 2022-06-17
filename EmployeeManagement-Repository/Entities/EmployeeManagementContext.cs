@@ -19,6 +19,8 @@ namespace EmployeeManagement_Repository.Entities
 
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -51,6 +53,12 @@ namespace EmployeeManagement_Repository.Entities
                     .IsRequired()
                     .HasMaxLength(12)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Companies)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Company_Employee1");
             });
 
             modelBuilder.Entity<Employee>(entity =>
@@ -91,6 +99,30 @@ namespace EmployeeManagement_Repository.Entities
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Role>(entity =>
+            {
+                entity.Property(e => e.RollName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.Roll)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.RollId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Users_UserRoles");
             });
 
             OnModelCreatingPartial(modelBuilder);
