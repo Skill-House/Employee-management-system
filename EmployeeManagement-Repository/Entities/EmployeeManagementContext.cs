@@ -27,7 +27,7 @@ namespace EmployeeManagement_Repository.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.;Database=EmployeeManagement;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-PI8JU28R;Database=EmployeeManagement;Trusted_Connection=True;");
             }
         }
 
@@ -107,29 +107,24 @@ namespace EmployeeManagement_Repository.Entities
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.RollId).HasColumnName("Roll_Id");
+
                 entity.Property(e => e.UserId)
                     .IsRequired()
                     .HasMaxLength(50);
+
+                entity.HasOne(d => d.Roll)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.RollId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Users_UserRoles");
             });
 
             modelBuilder.Entity<UserRole>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
-
-                entity.Property(e => e.UserId)
+                entity.Property(e => e.RollName)
                     .IsRequired()
                     .HasMaxLength(50);
-
-                entity.Property(e => e.UserRole1)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnName("UserRole");
-
-                entity.HasOne(d => d.IdNavigation)
-                    .WithOne(p => p.UserRole)
-                    .HasForeignKey<UserRole>(d => d.Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_UserRoles_UserRoles");
             });
 
             OnModelCreatingPartial(modelBuilder);

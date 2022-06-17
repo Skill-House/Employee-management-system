@@ -7,10 +7,14 @@ namespace EmployeeManagement_Repository.Entities
 {
     public partial class UserRole
     {
-        public int Id { get; set; }
-        public string UserId { get; set; }
-        public string UserRole1 { get; set; }
+        public UserRole()
+        {
+            Users = new HashSet<User>();
+        }
 
-        public virtual User IdNavigation { get; set; }
+        public int Id { get; set; }
+        public string RollName { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
     }
 }
