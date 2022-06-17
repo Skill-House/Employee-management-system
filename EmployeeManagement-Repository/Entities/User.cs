@@ -12,6 +12,6 @@ namespace EmployeeManagement_Repository.Entities
         public string UserId { get; set; }
         public string Password { get; set; }
 
-        public virtual UserRole Roll { get; set; }
+        public virtual Role Roll { get; set; }
     }
 }
