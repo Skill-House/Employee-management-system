@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-#nullable disable
-
-namespace EmployeeManagement_Repository.Entities
+namespace EmployeeManagement.Data.Models
 {
-    public partial class Company
+    public class UpdateCompanyModel
     {
         public int CompanyId { get; set; }
-        public int EmployeeId { get; set; }
         public string CompanyName { get; set; }
         public string CompanyAddress { get; set; }
         public string CompanyPhone { get; set; }
-
-        public virtual Employee Employee { get; set; }
     }
 }
