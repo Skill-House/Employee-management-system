@@ -8,7 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeManagement_Repository
+namespace EmployeeManagement_Repository.Entities
 {
     public class CompanyRepository
     {
@@ -57,6 +57,17 @@ namespace EmployeeManagement_Repository
             {
                 dbContext.Companies.Remove(company);
                 dbContext.SaveChanges();
+            }
+        }
+        public async Task Update(UpdateCompanyModel company)
+        {
+            var existingCompany = dbContext.Companies.Where(h => h.CompanyId == company.CompanyId).FirstOrDefault();
+            if (existingCompany != null)
+            {
+                existingCompany.CompanyName = company.CompanyName; // update only changeable properties
+                existingCompany.CompanyAddress = company.CompanyAddress;
+                existingCompany.CompanyPhone = company.CompanyPhone;
+                await this.dbContext.SaveChangesAsync();
             }
         }
     }

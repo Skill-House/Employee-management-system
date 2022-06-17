@@ -43,6 +43,12 @@ namespace EmployeeManagement_Web.Controllers
             return await companyBusiness.SaveCompanyAsync(company);
         }
 
+        [HttpPut(Name = "UpdateCompany")]
+        public async Task<HttpStatusCode> UpdateCompany(UpdateCompanyModel company)
+        {
+            return await companyBusiness.UpdateCompanyAsync(company);
+        }
+
 
 
     }
