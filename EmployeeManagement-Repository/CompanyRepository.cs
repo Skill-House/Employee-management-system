@@ -35,9 +35,13 @@ namespace EmployeeManagement_Repository.Entities
             return companyDetails;
         }
 
-        public async Task<Company> GetByID(int id)
+        public async Task<GetCompanyByIdModel> GetByID(int id)
         {
-            return dbContext.Companies.FirstOrDefault(a=>a.CompanyId == id);
+            var result = dbContext.Companies.FirstOrDefault(a=>a.CompanyId == id);
+            var companyDetail = new GetCompanyByIdModel();
+            companyDetail.CompanyName = result.CompanyName;
+            companyDetail.CompanyAddress = result.CompanyAddress;
+            return companyDetail;
         }
 
         public async Task Create(Company company)
@@ -48,8 +52,7 @@ namespace EmployeeManagement_Repository.Entities
 
         public async Task DeleteByID(int id)
         {
-            var company = await GetByID(id);
-
+            var company = dbContext.Companies.FirstOrDefault(a => a.CompanyId == id);
             if (company != null)
             {
                 dbContext.Companies.Remove(company);
