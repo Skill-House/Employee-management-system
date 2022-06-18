@@ -58,7 +58,15 @@ namespace EmployeeManagement_Repository.Entities
                     .WithMany(p => p.Companies)
                     .HasForeignKey(d => d.EmployeeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
+
                     .HasConstraintName("FK_Company_Employee");
+
+
+                   // .HasConstraintName("FK_Company_Employee1");
+
+                   // .HasConstraintName("FK_Company_Employee");
+
+
             });
 
             modelBuilder.Entity<Employee>(entity =>

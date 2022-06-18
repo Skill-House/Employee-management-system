@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace EmployeeManagement_Repository.Entities
 {
     public class CompanyRepository
@@ -43,12 +44,12 @@ namespace EmployeeManagement_Repository.Entities
             companyDetail.CompanyAddress = result.CompanyAddress;
             return companyDetail;
         }
-
         public async Task Create(Company company)
         {
             dbContext.Companies.Add(company);
             await dbContext.SaveChangesAsync();
         }
+
 
         public async Task DeleteByID(int id)
         {
