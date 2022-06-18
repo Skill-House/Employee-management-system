@@ -19,7 +19,7 @@ namespace EmployeeManagement_Repository
         public async Task<User> ValidateUser(string userID, string password)
 
         {
-            var existinUser = dbContext.Users.First(e => e.UserId == userID && e.Password == password);
+            User existinUser = dbContext.Users.FirstOrDefault(e => e.UserId == userID && e.Password == password);
 
             return existinUser;
         }

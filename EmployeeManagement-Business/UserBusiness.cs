@@ -23,7 +23,7 @@ namespace EmployeeManagement_Business
 
         {
 
-            var existinUser = await userRepository.ValidateUser(userModel.UserId, userModel.Password);
+            User existinUser = await userRepository.ValidateUser(userModel.UserId, userModel.Password);
 
             return existinUser;
         }

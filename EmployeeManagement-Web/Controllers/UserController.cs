@@ -20,16 +20,16 @@ namespace EmployeeManagement_Web.Controllers
 
 
          [HttpPost("ValidateUser")]
-        public async Task<IActionResult> ValidateUser(UserModel userModel)
+        public async Task<string> ValidateUser(UserModel userModel)
         {
-            var existingUser = await userBusiness.ValidateUser(userModel);
+            User existingUser = await userBusiness.ValidateUser(userModel);
 
             if (existingUser == null)
             {
-                return NotFound();
+                return "Login Unsucessful";
             }
 
-            return Ok();
+            return "User has logged in successfully";
 
         }
     }
