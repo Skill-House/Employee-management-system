@@ -11,21 +11,15 @@ namespace EmployeeManagement_Business
 {
     public class UserBusiness
     {
-
-
         private readonly UserRepository userRepository;
-
         public UserBusiness()
         {
             userRepository = new UserRepository();
         }
-        public async Task<User> ValidateUser(UserModel userModel)
 
+        public async Task<string> ValidateUser(UserModel userModel)
         {
-
-            var existinUser = await userRepository.ValidateUser(userModel.UserId, userModel.Password);
-
-            return existinUser;
+            return await userRepository.ValidateUser(userModel.UserId, userModel.Password);
         }
     }
 }
