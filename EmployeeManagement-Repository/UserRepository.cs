@@ -16,12 +16,17 @@ namespace EmployeeManagement_Repository
         {
             dbContext = new EmployeeManagementContext();
         }
-        public async Task<User> ValidateUser(string userID, string password)
+        public async Task<string> ValidateUser(string userID, string password)
 
         {
-            User existinUser = dbContext.Users.FirstOrDefault(e => e.UserId == userID && e.Password == password);
+            var existinUser = dbContext.Users.FirstOrDefault(e => e.UserId == userID && e.Password == password);
 
-            return existinUser;
+            if (existinUser == null)
+            {
+                return "Login Unsuccessful";
+            }
+
+            return "User logged in successfully";
         }
     }
 }

@@ -8,29 +8,20 @@ namespace EmployeeManagement_Web.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController: Controller
+    public class UserController : Controller
     {
 
-            private readonly UserBusiness userBusiness;
+        private readonly UserBusiness userBusiness;
 
-            public UserController()
-            {
-                userBusiness = new UserBusiness();
-            }
+        public UserController()
+        {
+            userBusiness = new UserBusiness();
+        }
 
-
-         [HttpPost("ValidateUser")]
+        [HttpPost("ValidateUser")]
         public async Task<string> ValidateUser(UserModel userModel)
         {
-            User existingUser = await userBusiness.ValidateUser(userModel);
-
-            if (existingUser == null)
-            {
-                return "Login Unsucessful";
-            }
-
-            return "User has logged in successfully";
-
+            return await userBusiness.ValidateUser(userModel);
         }
     }
 }
