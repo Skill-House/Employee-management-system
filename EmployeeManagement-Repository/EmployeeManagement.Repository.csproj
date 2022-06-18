@@ -17,10 +17,6 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-<<<<<<< HEAD
 	  <ProjectReference Include="..\EmployeeMangement.Data\EmployeeMangement.Data.csproj" />
-=======
-	  <ProjectReference Include="..\EmployeeManagement.Data\EmployeeManagement.Data.csproj" />
->>>>>>> origin/dev
 	</ItemGroup>
 </Project>

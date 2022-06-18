@@ -13,11 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EmployeeManagement-Repository\EmployeeManagement.Repository.csproj" />
-<<<<<<< HEAD
-    <ProjectReference Include="..\EmployeeMangement.Data\EmployeeMangement.Data.csproj" />
-=======
-    <ProjectReference Include="..\EmployeeManagement.Data\EmployeeManagement.Data.csproj" />
->>>>>>> origin/dev
+
   </ItemGroup>
 
 </Project>

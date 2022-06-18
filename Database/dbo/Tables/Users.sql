@@ -7,8 +7,4 @@
     CONSTRAINT [FK_Users_UserRoles] FOREIGN KEY ([RollId]) REFERENCES [dbo].[Roles] ([Id])
 );
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> origin/dev

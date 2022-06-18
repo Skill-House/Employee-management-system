@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.Data.Models;
 using EmployeeManagement_Repository;
 using EmployeeManagement_Repository.Entities;
+using EmployeeMangement.Data.Models;
 using System.Net;
 
 namespace EmployeeManagement_Business
@@ -36,6 +37,12 @@ namespace EmployeeManagement_Business
             return HttpStatusCode.OK;
 
         }
+
+        public Task<HttpStatusCode> SaveEmployeeAsync(EmployeeModel employee)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<HttpStatusCode> UpdateEmployeeAsync(Employee employee)
         {
             await employeeRepository.Update(employee);
