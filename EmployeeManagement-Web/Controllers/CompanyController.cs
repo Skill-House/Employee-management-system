@@ -1,4 +1,5 @@
-﻿using EmployeeManagement_Business;
+﻿using EmployeeManagement.Data.Models;
+using EmployeeManagement_Business;
 using EmployeeManagement_Repository.Entities;
 using EmployeeMangement.Data.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,16 +20,32 @@ namespace EmployeeManagement_Web.Controllers
         }
 
         [HttpGet("GetAllCompany")]
+<<<<<<< HEAD
         public async Task<List<CompanyModel>> GetAllCompany()
+=======
+        public async Task<List<CompanyModel>>GetAllCompany()
+>>>>>>> origin/dev
         {
             return await companyBusiness.GetAllCompaniesAsync();
         }
         [HttpGet("GetByID")]
-        public async Task<Company> GetByID(int id)
+        public async Task<GetCompanyByIdModel> GetByID(int id)
         {
             return await companyBusiness.GetByID(id);
         }
+<<<<<<< HEAD
         [HttpPost("SaveCompany")]
+=======
+
+        [HttpDelete("DeleteByID")]
+        public async Task<IActionResult> DeleteByID(int id)
+        {
+            var result = await companyBusiness.DeleteByID(id);
+            return Ok(result);
+        }
+
+        [HttpPost(Name = "SaveCompany")]
+>>>>>>> origin/dev
         public async Task<HttpStatusCode> SaveCompany(CompanyModel company)
         {
             return await companyBusiness.SaveCompanyAsync(company);
@@ -44,6 +61,12 @@ namespace EmployeeManagement_Web.Controllers
         {
             var result = companyBusiness.DeleteByID(id);
             Ok(result);
+        }
+
+        [HttpPut(Name = "UpdateCompany")]
+        public async Task<HttpStatusCode> UpdateCompany(UpdateCompanyModel company)
+        {
+            return await companyBusiness.UpdateCompanyAsync(company);
         }
 
 

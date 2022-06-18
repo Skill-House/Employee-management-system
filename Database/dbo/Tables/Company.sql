@@ -5,10 +5,8 @@
     [CompanyAddress] VARCHAR (100) NOT NULL,
     [CompanyPhone]   VARCHAR (12)  NOT NULL,
     CONSTRAINT [PK_CompanyDetails] PRIMARY KEY CLUSTERED ([CompanyId] ASC),
-    CONSTRAINT [FK_Company_Employee1] FOREIGN KEY ([EmployeeId]) REFERENCES [dbo].[Employee] ([Id])
+    CONSTRAINT [FK_Company_Employee] FOREIGN KEY ([EmployeeId]) REFERENCES [dbo].[Employee] ([Id])
 );
-
-
 
 
 

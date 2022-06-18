@@ -8,8 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EmployeeManagement-Repository\EmployeeManagement.Repository.csproj" />
+<<<<<<< HEAD
     <ProjectReference Include="..\EmployeeMangement.Data\EmployeeMangement.Data.csproj" />
+=======
+    <ProjectReference Include="..\EmployeeManagement.Data\EmployeeManagement.Data.csproj" />
+>>>>>>> origin/dev
   </ItemGroup>
 
 </Project>

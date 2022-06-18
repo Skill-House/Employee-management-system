@@ -1,4 +1,5 @@
-﻿using EmployeeManagement_Repository;
+﻿using EmployeeManagement.Data.Models;
+using EmployeeManagement_Repository;
 using EmployeeManagement_Repository.Entities;
 using EmployeeMangement.Data.Models;
 
@@ -23,13 +24,21 @@ namespace EmployeeManagement_Business
         {
             return await companyRepository.GetAllCompaniesAsync();
         }
+<<<<<<< HEAD
         public async Task<Company> GetByID(int id)
+=======
+
+        public async Task<GetCompanyByIdModel> GetByID(int id)
+>>>>>>> origin/dev
         {
             return await companyRepository.GetByID(id);
         }
         public async Task<HttpStatusCode> SaveCompanyAsync(CompanyModel company)
         {
+<<<<<<< HEAD
            // await companyRepository.Create(company);
+=======
+>>>>>>> origin/dev
             Company cmpn = new Company();
             cmpn.CompanyName = company.CompanyName;
             cmpn.CompanyAddress = company.CompanyAddress;
@@ -38,11 +47,14 @@ namespace EmployeeManagement_Business
             await companyRepository.Create(cmpn);
             return HttpStatusCode.OK;
         }
+<<<<<<< HEAD
         public async Task<HttpStatusCode> UpdateCompanyAsync(CompanyModel company)
         {
             await companyRepository.Update(company);
             return HttpStatusCode.OK;
         }
+=======
+>>>>>>> origin/dev
 
         public async Task<HttpStatusCode> DeleteByID(int id)
         {
@@ -50,12 +62,20 @@ namespace EmployeeManagement_Business
             return HttpStatusCode.OK;
 
         }
+<<<<<<< HEAD
         //public async Task<HttpStatusCode> DeleteCompanyAsync(int Id)
         //{
         //    await companyRepository.Delete(Id);
         //    return HttpStatusCode.OK;
         //}
+=======
+        public async Task<HttpStatusCode> UpdateCompanyAsync(UpdateCompanyModel company)
+        {
+            await companyRepository.Update(company);
+            return HttpStatusCode.OK;
+>>>>>>> origin/dev
 
+        }
     }
 }
 
