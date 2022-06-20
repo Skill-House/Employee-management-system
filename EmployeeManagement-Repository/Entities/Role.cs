@@ -9,12 +9,12 @@ namespace EmployeeManagement_Repository.Entities
     {
         public Role()
         {
-            Users = new HashSet<User>();
+            UserRoles = new HashSet<UserRole>();
         }
 
-        public int Id { get; set; }
-        public string RollName { get; set; }
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }
