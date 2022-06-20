@@ -1,6 +1,6 @@
-﻿using EmployeeManagement.Data.Models;
-using EmployeeManagement_Repository;
+﻿using EmployeeManagement_Repository;
 using EmployeeManagement_Repository.Entities;
+using Empolyee_Mangement.Data.Models;
 using System.Net;
 
 namespace EmployeeManagement_Business
@@ -12,27 +12,24 @@ namespace EmployeeManagement_Business
         {
             this.employeeRepository = new EmployeeRepository();
         }
-        public async Task<List<Employee>> GetAllEmployeesAsync()
-        {
-            return await employeeRepository.GetAllEmployeesAsync();
-        }
+
         public async Task<Employee> GetEmployeeAsync(int Id)
         {
             var alumnus = await employeeRepository.GetById(Id);
             return alumnus;
-
         }
-        public async Task<HttpStatusCode> SaveEmployeeAsync(EmployeeModel employee)
+        public async Task<HttpStatusCode> SaveEmployeeAsync(EmployeeAddModel employee)
         {
-            Employee emp = new Employee();
-            emp.FirstName = employee.FirstName;
-            emp.LastName = employee.LastName;
-            emp.Gender = employee.Gender;
-            emp.Email = employee.Email;
-            emp.Phone = employee.Phone;
+            var emp = new Employee();
+            emp.FirstName=employee.FirstName;
+            emp.LastName=employee.LastName;
+            emp.Email=employee.Email;
+                emp.Phone=employee.Phone;
+            emp.CompanyId=employee.CompanyId;
+            emp.Gender=employee.Gender;
             emp.DateCreated = employee.DateCreated;
             emp.DateModified = employee.DateModified;
-            await employeeRepository.Create(emp);
+             await employeeRepository.Create(emp);
             return HttpStatusCode.OK;
 
         }
@@ -44,9 +41,12 @@ namespace EmployeeManagement_Business
         }
         public async Task<HttpStatusCode> DeleteEmployeeAsync(int Id)
         {
-            await employeeRepository.Delete(Id);
+             await employeeRepository.Delete(Id);
             return HttpStatusCode.OK;
         }
-
+        public async Task<List<Employee>> GetAllEmployeesAsync()
+        {
+            return await employeeRepository.GetAllEmployeesAsync();
+        }
     }
 }
