@@ -19,10 +19,10 @@ namespace EmployeeManagement_Web.Controllers
         private readonly UserBusiness userBusiness;
 
 
-        public UserController(ILogger<UserController> logger)
+        public UserController(ILogger<UserController> logger, UserBusiness _userBusiness)
         {
             _logger = logger;
-            userBusiness = new UserBusiness();
+            userBusiness = _userBusiness;
         }
 
         [HttpGet("GetAllUser")]

@@ -8,9 +8,9 @@ namespace EmployeeManagement_Business
     public class EmployeeBuisness
     {
         private readonly EmployeeRepository employeeRepository;
-        public EmployeeBuisness()
+        public EmployeeBuisness(EmployeeRepository employeeRepository)
         {
-            this.employeeRepository = new EmployeeRepository();
+            this.employeeRepository = employeeRepository;
         }
 
         public async Task<Employee> GetEmployeeAsync(int Id)

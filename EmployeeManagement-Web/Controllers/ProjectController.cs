@@ -15,10 +15,10 @@ namespace EmployeeManagement_Web.Controllers
             private readonly ProjectBuisness projectBusiness;
 
 
-            public ProjectController(ILogger<ProjectController> logger)
+            public ProjectController(ILogger<ProjectController> logger, ProjectBuisness projectBuisness)
             {
                 _logger = logger;
-                projectBusiness = new ProjectBuisness();
+                projectBusiness = projectBuisness;
             }
         [HttpGet("GetAllProjects")]
         public async Task<List<Project>> GetAllProjects()

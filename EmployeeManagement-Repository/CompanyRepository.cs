@@ -12,9 +12,9 @@ namespace EmployeeManagement_Repository
 
         private readonly EmployeeManagementContext dbContext;
 
-        public CompanyRepository()
+        public CompanyRepository(EmployeeManagementContext dbContext)
         {
-            dbContext =new EmployeeManagementContext();
+            this.dbContext = dbContext;
         }
 
         public async Task Create(Company company)

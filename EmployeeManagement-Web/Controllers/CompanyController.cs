@@ -12,9 +12,9 @@ namespace EmployeeManagement_Web.Controllers
     {
         private readonly CompanyBuisness companyBusiness;
 
-        public CompanyController()
+        public CompanyController(CompanyBuisness companyBuisness)
         {
-            companyBusiness = new CompanyBuisness();
+            companyBusiness = companyBuisness;
         }
 
         [HttpPost("CreateCompany")]

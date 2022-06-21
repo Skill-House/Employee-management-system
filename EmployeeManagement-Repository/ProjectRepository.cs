@@ -10,9 +10,9 @@ namespace EmployeeManagement_Repository
     public class ProjectRepository
     {
         private readonly EmployeeManagementContext dbContext;
-        public ProjectRepository()
+        public ProjectRepository(EmployeeManagementContext dbContext)
         {
-            this.dbContext = new EmployeeManagementContext();
+            this.dbContext = dbContext;
         }
         public async Task<List<Project>> GetAllProjectsAsync()
         {
