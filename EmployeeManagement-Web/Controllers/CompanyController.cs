@@ -1,58 +1,53 @@
-﻿using EmployeeManagement.Data.Models;
+﻿using System.Net;
 using EmployeeManagement_Business;
 using EmployeeManagement_Repository.Entities;
+using Empolyee_Mangement.Data.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace EmployeeManagement_Web.Controllers
 {
-
     [ApiController]
     [Route("[controller]")]
-    public class CompanyController : Controller
+    public class CompanyController : ApiBaseController
     {
-        private readonly CompanyBusiness companyBusiness;
+        private readonly CompanyBuisness companyBusiness;
 
         public CompanyController()
         {
-            companyBusiness = new CompanyBusiness();
+            companyBusiness = new CompanyBuisness();
         }
 
-        [HttpGet("GetAllCompany")]
-        public async Task<List<CompanyModel>>GetAllCompany()
+        [HttpPost("CreateCompany")]
+        public async Task<HttpStatusCode> CreateCompany(CompanyAddModel company)
         {
-            return await companyBusiness.GetAllCompaniesAsync();
+            return await companyBusiness.CreateCompany(company);
         }
-
-        [HttpGet("GetByID")]
-        public async Task<GetCompanyByIdModel> GetByID(int id)
+        [HttpGet(Name = "GetCompany")]
+        public async Task<IActionResult> GetById(int companyId)
         {
-            return await companyBusiness.GetByID(id);
+            var alumnus = await companyBusiness.GetCompanyAsync(companyId);
+            return Ok(alumnus);
         }
-
-        
 
         [HttpDelete("DeleteByID")]
         public async Task<IActionResult> DeleteByID(int id)
         {
-            var result = await companyBusiness.DeleteByID(id);
-            return Ok(result);
+            var alumnus = await companyBusiness.DeleteCompanyAsync(companyId);
+            return Ok(alumnus);
         }
-
-        [HttpPost(Name = "SaveCompany")]
-        public async Task<HttpStatusCode> SaveCompany(CompanyModel company)
+        [HttpGet("GetAllCompanies")]
+        public async Task<List<Company>> GetAllCompanies()
         {
-            return await companyBusiness.SaveCompanyAsync(company);
+            return await companyBusiness.GetAllCompanyAsync();
         }
 
-        //[HttpPut(Name = "UpdateCompany")]
-        //public async Task<HttpStatusCode> UpdateCompany(UpdateCompanyModel company)
-        //{
-        //    return await companyBusiness.UpdateCompanyAsync(company);
-        //}
+        [HttpPut(Name = "UpdateCompany")]
+        public async Task<HttpStatusCode> UpdateCompany(UpdateCompanyModel company)
+        {
+            return await companyBusiness.UpdateCompanyAsync(company);
+        }
 
 
 
     }
 }
-
