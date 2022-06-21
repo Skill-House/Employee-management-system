@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement_Repository;
+using EmployeeManagement_Repository.Contracts;
 using EmployeeManagement_Repository.Entities;
 using Empolyee_Mangement.Data;
 using Empolyee_Mangement.Data.Models;
@@ -16,12 +17,12 @@ namespace EmployeeManagement_Business
 {
     public class UserBusiness
     {
-        private readonly UserRepository userRepository;
-        private readonly UserRoleRepository userRoleRepository;
-        public UserBusiness()
+        private readonly IUserRepository userRepository;
+        private readonly IUserRoleRepository userRoleRepository;
+        public UserBusiness(IUserRepository _userRepository, IUserRoleRepository userRoleRepository)
         {
-            this.userRepository = new UserRepository();
-            this.userRoleRepository = new UserRoleRepository();
+            this.userRepository = _userRepository;
+            this.userRoleRepository = userRoleRepository;
         }
 
 

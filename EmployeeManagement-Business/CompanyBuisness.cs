@@ -14,9 +14,9 @@ namespace EmployeeManagement_Business
     {
         private readonly CompanyRepository companyRepository;
 
-        public CompanyBuisness()
+        public CompanyBuisness(CompanyRepository companyRepository)
         {
-            companyRepository =new CompanyRepository();
+            this.companyRepository = companyRepository;
         }
 
         public async Task<HttpStatusCode> CreateCompany(CompanyAddModel company)

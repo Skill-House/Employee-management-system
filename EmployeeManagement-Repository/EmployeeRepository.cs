@@ -6,9 +6,9 @@ namespace EmployeeManagement_Repository
     public class EmployeeRepository
     {
         private readonly EmployeeManagementContext dbContext;
-        public EmployeeRepository()
+        public EmployeeRepository(EmployeeManagementContext dbContext)
         {
-            this.dbContext = new EmployeeManagementContext();
+            this.dbContext = dbContext;
         }
 
         public async Task Create(Employee employee)

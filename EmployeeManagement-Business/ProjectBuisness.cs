@@ -12,9 +12,9 @@ namespace EmployeeManagement_Business
     public class ProjectBuisness
     {
         private readonly ProjectRepository projectRepository;
-        public ProjectBuisness()
+        public ProjectBuisness(ProjectRepository projectRepository)
         {
-            this.projectRepository = new ProjectRepository();
+            this.projectRepository = projectRepository;
         }
         public async Task<List<Project>> GetAllProjectsAsync()
         {

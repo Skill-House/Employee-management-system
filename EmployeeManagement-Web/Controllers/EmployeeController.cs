@@ -15,10 +15,10 @@ namespace EmployeeManagement_Web.Controllers
         private readonly EmployeeBuisness employeeBusiness;
 
 
-        public EmployeeController(ILogger<EmployeeController> logger)
+        public EmployeeController(ILogger<EmployeeController> logger, EmployeeBuisness employeeBuisness)
         {
             _logger = logger;
-            employeeBusiness = new EmployeeBuisness();
+            employeeBusiness = employeeBuisness;
         }
 
         [HttpGet("GetAllEmployee")]

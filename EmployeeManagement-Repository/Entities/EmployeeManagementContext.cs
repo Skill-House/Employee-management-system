@@ -8,10 +8,6 @@ namespace EmployeeManagement_Repository.Entities
 {
     public partial class EmployeeManagementContext : DbContext
     {
-        public EmployeeManagementContext()
-        {
-        }
-
         public EmployeeManagementContext(DbContextOptions<EmployeeManagementContext> options)
             : base(options)
         {
