@@ -20,6 +20,7 @@ namespace EmployeeManagement_Repository.Entities
         public string Phone { get; set; }
         public string DateCreated { get; set; }
         public string DateModified { get; set; }
+        public int? CompanyId { get; set; }
 
         public virtual ICollection<Company> Companies { get; set; }
     }
