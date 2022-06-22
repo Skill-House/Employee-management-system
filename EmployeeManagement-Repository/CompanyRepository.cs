@@ -22,9 +22,9 @@ namespace EmployeeManagement_Repository.Entities
             await dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteByID(int id)
+       public async Task<Company> GetById(int Id)
         {
-            var company = dbContext.Companies.FirstOrDefault(e => e.CompanyId == Id);
+            var company= dbContext.Companies.FirstOrDefault(e=>e.CompanyId==Id);
             return company;
         }
         public async Task Delete(int companyId)

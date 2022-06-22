@@ -30,7 +30,7 @@ namespace EmployeeManagement_Web.Controllers
         }
 
         [HttpDelete("DeleteByID")]
-        public async Task<IActionResult> DeleteByID(int id)
+        public async Task<IActionResult> DeleteByID(int companyId)
         {
             var alumnus = await companyBusiness.DeleteCompanyAsync(companyId);
             return Ok(alumnus);
@@ -42,7 +42,7 @@ namespace EmployeeManagement_Web.Controllers
         }
 
         [HttpPut(Name = "UpdateCompany")]
-        public async Task<HttpStatusCode> UpdateCompany(UpdateCompanyModel company)
+        public async Task<HttpStatusCode> UpdateCompany(CompanyUpdateModel company)
         {
             return await companyBusiness.UpdateCompanyAsync(company);
         }
