@@ -1,18 +1,16 @@
 ﻿using EmployeeManagement_Repository.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagement_Repository
 {
     public class EmployeeRepository
     {
         private readonly EmployeeManagementContext dbContext;
-        public EmployeeRepository()
+        public EmployeeRepository(EmployeeManagementContext dbContext)
         {
-            this.dbContext = new EmployeeManagementContext();
+            this.dbContext = dbContext;
         }
-        public async Task<List<Employee>> GetAllEmployeesAsync()
-        {
-            return dbContext.Employees.ToList();
-        }
+
         public async Task Create(Employee employee)
         {
             dbContext.Employees.Add(employee);
@@ -43,7 +41,10 @@ namespace EmployeeManagement_Repository
                 dbContext.Employees.Remove(employee);
                 await this.dbContext.SaveChangesAsync();
             }
-
+        }
+        public async Task<List<Employee>> GetAllEmployeesAsync()
+        {
+            return dbContext.Employees.Include(x=>x.Company).ToList();
         }
     }
 }

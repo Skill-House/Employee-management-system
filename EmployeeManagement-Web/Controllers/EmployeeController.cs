@@ -1,6 +1,6 @@
-﻿using EmployeeManagement.Data.Models;
-using EmployeeManagement_Business;
+﻿using EmployeeManagement_Business;
 using EmployeeManagement_Repository.Entities;
+using Empolyee_Mangement.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -8,24 +8,24 @@ namespace EmployeeManagement_Web.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class EmployeeController : Controller
+    public class EmployeeController : ApiBaseController
     {
 
         private readonly ILogger<EmployeeController> _logger;
         private readonly EmployeeBuisness employeeBusiness;
 
-        public EmployeeController(ILogger<EmployeeController> logger)
+
+        public EmployeeController(ILogger<EmployeeController> logger, EmployeeBuisness employeeBuisness)
         {
             _logger = logger;
-            employeeBusiness = new EmployeeBuisness();
+            employeeBusiness = employeeBuisness;
         }
 
         [HttpGet("GetAllEmployee")]
         public async Task<List<Employee>> GetAllEmployee()
         {
-            return await employeeBusiness.GetAllEmployeesAsync();
+             return await employeeBusiness.GetAllEmployeesAsync();
         }
-
         [HttpGet(Name = "GetEmployee")]
         public async Task<IActionResult> GetById(int employeeId)
         {
@@ -33,7 +33,7 @@ namespace EmployeeManagement_Web.Controllers
             return Ok(alumnus);
         }
         [HttpPost(Name = "SaveEmployee")]
-        public async Task<HttpStatusCode> SaveEmployee(EmployeeModel employee)
+        public async Task<HttpStatusCode> SaveEmployee(EmployeeAddModel employee)
         {
             return await employeeBusiness.SaveEmployeeAsync(employee);
         }
