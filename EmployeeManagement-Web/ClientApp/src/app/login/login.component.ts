@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
       return;
       const userName = this.loginForm.value.username;
       const passWord = this.loginForm.value.password;
-      debugger
         this.authenticationService.login(userName, passWord)
       .subscribe(
         (data) => {
