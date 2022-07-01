@@ -10,3 +10,6 @@ export class USERURLConstants {
 export class EmployeeURLConstants {
     static GET_ALL_EMPLOYEE  = apiUrl + '/employee/GetAllEmployee';
 }
+export class CompanyURLConstraints {
+    static GET_ALL_COMPANIES = apiUrl + '/Company/GetAllCompanies';
+}
