@@ -1,27 +1,75 @@
-﻿using EmployeeManagement.Data.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using EmployeeManagement_Business;
 using EmployeeManagement_Repository.Entities;
-using Microsoft.AspNetCore.Mvc;
+
 using System.Net;
+using Empolyee_Mangement.Data;
+using Empolyee_Mangement.Data.Models;
+using System.Web;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeManagement_Web.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class UserController : Controller
+    [Route("user")]
+    public class UserController : ApiBaseController
     {
-
+        private readonly ILogger<UserController> _logger;
         private readonly UserBusiness userBusiness;
 
-        public UserController()
+
+        public UserController(ILogger<UserController> logger, UserBusiness _userBusiness)
         {
-            userBusiness = new UserBusiness();
+            _logger = logger;
+            userBusiness = _userBusiness;
         }
 
-        [HttpPost("ValidateUser")]
-        public async Task<string> ValidateUser(UserModel userModel)
+        [HttpGet("GetAllUser")]
+        public async Task<List<User>> GetAllUser()
         {
-            return await userBusiness.ValidateUser(userModel);
+            return await userBusiness.GetAllUserAsync();
+        }
+        [HttpGet(Name = "GetUser")]
+        public async Task<IActionResult> GetById(int Id)
+        {            var usrs = await userBusiness.GetUserAsync(Id);
+            return Ok(usrs);
+        }
+        [HttpPost(Name = "SaveUser")]
+        public async Task<HttpStatusCode> SaveUser(UserAddModel user)
+        {
+            return await userBusiness.SaveUserAsync(user);
+        }
+        [HttpPut(Name = "UpdateUser")]
+        public async Task<HttpStatusCode> UpdateUser(User user)
+        {
+            return await userBusiness.UpdateUserAsync(user);
+        }
+        [HttpDelete(Name = "DeleteUser")]
+        public async Task<IActionResult> DeleteById(int Id)
+        {
+            var usrs = await userBusiness.DeleteUserAsync(Id);
+            return Ok(usrs);
+        }
+        [AllowAnonymous]
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(LoginModel loginmodel)
+        {
+
+            var login = await userBusiness.Login(loginmodel);
+            if(login != null)
+            {
+                await userBusiness.PopulateJwtTokenAsync(login);
+                var data = JsonConvert.SerializeObject(login);
+                Response.Cookies.Append("ss", data);
+                return Ok(login);
+            }
+            else
+            {
+                return BadRequest();
+            }
+    
+                
         }
     }
 }
