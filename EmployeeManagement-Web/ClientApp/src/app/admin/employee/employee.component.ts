@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../service/admin.service';
+import { AdminService } from '../services/admin.service';
 
 @Component({
   selector: 'app-employee',
@@ -8,21 +8,20 @@ import { AdminService } from '../service/admin.service';
 })
 export class EmployeeComponent implements OnInit {
 
-  employeeData : any;
-  constructor(private adminService: AdminService) {
+  employeeData : any ;
 
-    this.getAllEmployee();
+  constructor(private adminService : AdminService) {
+    
    }
 
-
   ngOnInit(): void {
+    this.getAllEmployees();
   }
-  getAllEmployee(){
-    this.adminService.getAllEmployee().subscribe((e)=>
-    {
-      this.employeeData = e;
-      debugger;
+
+  getAllEmployees(){
+    this.adminService.getAllEmployee().subscribe((e)=>{
+        this.employeeData = e ;
+        debugger;
     })
   }
-
 }

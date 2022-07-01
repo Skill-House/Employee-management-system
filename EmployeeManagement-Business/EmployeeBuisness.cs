@@ -24,7 +24,7 @@ namespace EmployeeManagement_Business
             emp.FirstName=employee.FirstName;
             emp.LastName=employee.LastName;
             emp.Email=employee.Email;
-                emp.Phone=employee.Phone;
+            emp.Phone=employee.Phone;
             emp.CompanyId=employee.CompanyId;
             emp.Gender=employee.Gender;
             emp.DateCreated = employee.DateCreated;
@@ -44,9 +44,26 @@ namespace EmployeeManagement_Business
              await employeeRepository.Delete(Id);
             return HttpStatusCode.OK;
         }
-        public async Task<List<Employee>> GetAllEmployeesAsync()
+        public async Task<List<EmployeeViewModel>> GetAllEmployeesAsync()
         {
-            return await employeeRepository.GetAllEmployeesAsync();
+            var employeeViewModelList = new List<EmployeeViewModel>();
+            var employeeList = await employeeRepository.GetAllEmployeesAsync();
+            foreach(var employee in employeeList)
+            {
+                employeeViewModelList.Add(new EmployeeViewModel
+                {
+                    FirstName = employee.FirstName,
+                    LastName = employee.LastName,
+                    Email = employee.Email,
+                    Gender = employee.Gender,
+                    Phone = employee.Phone,
+                    DateCreated = employee.DateCreated,
+                    DateModified = employee.DateModified,
+                    CompanyName = employee.Company.CompanyName,
+                    CompanyAddress = employee.Company.CompanyAddress,
+                });
+            }
+            return employeeViewModelList;
         }
     }
 }
