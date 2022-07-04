@@ -1,15 +1,19 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { EmployeeURLConstants } from "src/app/shared/constants/url-constant";
+import { CompanyURLConstraints, EmployeeURLConstants } from "src/app/shared/constants/url-constant";
+@Injectable({providedIn: 'root'})
 
- @Injectable({providedIn:'root'})
- export class AdminService{
-    constructor(private http:HttpClient)
-    {
-
-    }
+export class AdminService{
+    constructor(private http:HttpClient){}
+    
     getAllEmployee(){
-    debugger;
-    return this.http.get<any>(EmployeeURLConstants.Get_All_EMPLOYEE);
+        return this.http.get<any>(EmployeeURLConstants.GET_ALL_EMPLOYEE);
     }
- }
+
+    GetAllCompanies(){
+        
+        return this.http.get<any>(CompanyURLConstraints.GET_ALL_COMPANIES);
+    }
+
+
+}
