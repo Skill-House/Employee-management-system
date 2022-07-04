@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../Service/admin.service';
 
 @Component({
   selector: 'app-employee',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-
-  constructor() { }
+  employeeData:any;
+  constructor(private adminService:AdminService) { }
+  
 
   ngOnInit(): void {
+    this.getAllEmployees;
   }
+ 
 
+getAllEmployees(){
+  this.adminService.getAllEmployee().subscribe((e)=>{this.employeeData=e;
+    debugger;
+
+  })
+}
 }
