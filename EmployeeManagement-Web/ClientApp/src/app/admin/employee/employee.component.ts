@@ -15,13 +15,6 @@ export class EmployeeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.getAllEmployees();
   }
 
-  getAllEmployees(){
-    this.adminService.getAllEmployee().subscribe((e)=>{
-        this.employeeData = e ;
-        debugger;
-    })
-  }
 }
