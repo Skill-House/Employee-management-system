@@ -22,7 +22,7 @@ namespace EmployeeManagement_Web.Controllers
         }
 
         [HttpGet("GetAllEmployee")]
-        public async Task<List<Employee>> GetAllEmployee()
+        public async Task<List<EmployeeViewModel>> GetAllEmployee()
         {
              return await employeeBusiness.GetAllEmployeesAsync();
         }
