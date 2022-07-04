@@ -8,5 +8,11 @@ export class USERURLConstants {
     static GETALL = apiUrl + '/user/GetAllUser';
 }
 export class EmployeeURLConstants {
-    static GET_ALL_EMPLOYEE  = apiUrl + '/employee/GetAllEmployee';
+    static GET_ALL_EMPLOYEE  = apiUrl + '/api/employee/GetAllEmployee';
+    static DELETE_EMPLOYEE = apiUrl + '/api/employee/';
 }
+
+export class CompanyURLConstants{
+    static GET_ALL_COMPANIES = apiUrl +'/company/GetAllCompanies';
+}
+

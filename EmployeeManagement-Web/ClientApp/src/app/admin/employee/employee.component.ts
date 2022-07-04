@@ -21,7 +21,16 @@ export class EmployeeComponent implements OnInit {
   getAllEmployees(){
     this.adminService.getAllEmployee().subscribe((e)=>{
         this.employeeData = e ;
-        debugger;
     })
+  }
+  deleteEmployee(employeeId : number){
+      this.adminService.deleteEmployee(employeeId).subscribe((e)=>{
+        if(e==200)
+          console.log("Deleted Successfully")
+        else
+          console.log("This record is not Found")
+        this.getAllEmployees();
+      })
+      
   }
 }
