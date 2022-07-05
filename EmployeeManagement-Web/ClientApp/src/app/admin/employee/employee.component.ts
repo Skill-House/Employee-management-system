@@ -18,9 +18,13 @@ export class EmployeeComponent implements OnInit {
   }
 
   getAllEmployees(){
-    this.adminService.getAllEmployee().subscribe((e)=>{
+   
+    this.adminService.getAllEmployee().subscribe((e)=>
+    {
+        debugger;
         this.employeeData = e ;
-    })
+    }
+    )
   }
   deleteEmployee(employeeId : number){
       this.adminService.deleteEmployee(employeeId).subscribe((e)=>{

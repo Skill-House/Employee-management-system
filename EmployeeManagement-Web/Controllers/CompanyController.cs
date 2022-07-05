@@ -28,8 +28,9 @@ namespace EmployeeManagement_Web.Controllers
             var alumnus = await companyBusiness.GetCompanyAsync(companyId);
             return Ok(alumnus);
         }
-        [HttpDelete(Name = "DeleteCompany")]
-        public async Task<IActionResult> DeleteById(int companyId)
+
+        [HttpDelete("DeleteByID")]
+        public async Task<IActionResult> DeleteByID(int companyId)
         {
             var alumnus = await companyBusiness.DeleteCompanyAsync(companyId);
             return Ok(alumnus);
@@ -39,10 +40,14 @@ namespace EmployeeManagement_Web.Controllers
         {
             return await companyBusiness.GetAllCompanyAsync();
         }
-        [HttpPut("UpdateCompany")]
+
+        [HttpPut(Name = "UpdateCompany")]
         public async Task<HttpStatusCode> UpdateCompany(CompanyUpdateModel company)
         {
             return await companyBusiness.UpdateCompanyAsync(company);
         }
+
+
+
     }
 }
