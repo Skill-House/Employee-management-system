@@ -20,6 +20,7 @@ export class ProjectComponent implements OnInit {
   getAllProject(){
     this.adminService.getAllProject().subscribe((p)=>
     {
+      debugger;
       this.projectData = p;
     }
     )
