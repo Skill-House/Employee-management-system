@@ -11,7 +11,7 @@ export class AdminService{
     getAllEmployee(){
         return this.http.get<any>(EmployeeURLConstants.GET_ALL_EMPLOYEE);
     }
-   
+    
     deleteEmployee(employeeId : number){
         return this.http.delete<any>(EmployeeURLConstants.DELETE_EMPLOYEE+employeeId);
     }
