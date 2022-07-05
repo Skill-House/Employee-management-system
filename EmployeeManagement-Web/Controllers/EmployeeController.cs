@@ -6,8 +6,8 @@ using System.Net;
 
 namespace EmployeeManagement_Web.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+
+    [Route("api/Employee")]
     public class EmployeeController : ApiBaseController
     {
 
@@ -42,7 +42,7 @@ namespace EmployeeManagement_Web.Controllers
         {
             return await employeeBusiness.UpdateEmployeeAsync(employee);
         }
-        [HttpDelete(Name = "DeeleteEmployee")]
+        [HttpDelete("{employeeId}")]
         public async Task<IActionResult> DeleteById(int employeeId)
         {
             var alumnus = await employeeBusiness.DeleteEmployeeAsync(employeeId);
