@@ -1,11 +1,7 @@
 ﻿using EmployeeManagement_Repository;
 using EmployeeManagement_Repository.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Empolyee_Mangement.Data.Models;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeManagement_Business
 {
@@ -16,9 +12,25 @@ namespace EmployeeManagement_Business
         {
             this.projectRepository = projectRepository;
         }
-        public async Task<List<Project>> GetAllProjectsAsync()
+        //public async Task<List<Project>> GetAllProjectsAsync()
+        //{
+        //    return await projectRepository.GetAllProjectsAsync();
+        //}
+        public async Task<List<ProjectModel>> GetAllProjectsAsync()
         {
-            return await projectRepository.GetAllProjectsAsync();
+            var employeeViewModelList = new List<ProjectModel>();
+            var employeeList = await projectRepository.GetAllProjectsAsync();
+            foreach (var employee in employeeList)
+            {
+                employeeViewModelList.Add(new ProjectModel
+                {
+                    ProjectId = employee.ProjectId,
+                    ProjectName = employee.ProjectName,
+                    ProjectDescription = employee.ProjectDescription,
+                    Projectduration = employee.Projectduration,
+                });
+            }
+            return employeeViewModelList;
         }
         public async Task<Project> GetProjectAsync(int ProjectId)
         {

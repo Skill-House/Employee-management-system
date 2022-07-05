@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement_Business;
 using EmployeeManagement_Repository.Entities;
+using Empolyee_Mangement.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -21,7 +22,7 @@ namespace EmployeeManagement_Web.Controllers
                 projectBusiness = projectBuisness;
             }
         [HttpGet("GetAllProjects")]
-        public async Task<List<Project>> GetAllProjects()
+        public async Task<List<ProjectModel>> GetAllProjects()
         {
             return await projectBusiness.GetAllProjectsAsync();
         }

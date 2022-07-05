@@ -13,3 +13,6 @@ export class EmployeeURLConstants {
 export class CompanyURLConstraints {
     static GET_ALL_COMPANIES = apiUrl + '/Company/GetAllCompanies';
 }
+export class ProjectURLConstants{
+    static GET_ALL_PROJECT =apiUrl +'/Project/GetAllCompanies';
+}

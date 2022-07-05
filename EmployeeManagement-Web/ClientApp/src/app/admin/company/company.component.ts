@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../service/admin.service';
+import { AdminService } from '../services/admin.service';
+
 
 @Component({
   selector: 'app-company',
@@ -9,6 +10,7 @@ import { AdminService } from '../service/admin.service';
 export class CompanyComponent implements OnInit {
 
   companyData: any ;
+
 
   constructor(private adminService : AdminService) {
 
