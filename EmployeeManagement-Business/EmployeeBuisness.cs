@@ -41,8 +41,17 @@ namespace EmployeeManagement_Business
         }
         public async Task<HttpStatusCode> DeleteEmployeeAsync(int Id)
         {
-             await employeeRepository.Delete(Id);
-            return HttpStatusCode.OK;
+            var employee = await employeeRepository.GetById(Id);
+            if(employee == null)
+            {
+                return HttpStatusCode.NotFound;
+            }
+            else
+            {
+                await employeeRepository.Delete(Id);
+                return HttpStatusCode.OK;
+            }
+
         }
         public async Task<List<EmployeeViewModel>> GetAllEmployeesAsync()
         {
@@ -51,7 +60,7 @@ namespace EmployeeManagement_Business
             foreach(var employee in employeeList)
             {
                 employeeViewModelList.Add(new EmployeeViewModel
-                {
+                {   Id = employee.Id,
                     FirstName = employee.FirstName,
                     LastName = employee.LastName,
                     Email = employee.Email,

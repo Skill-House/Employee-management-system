@@ -93,9 +93,9 @@
                       </td>
                       <td class=" ">{{employee.companyName}} 
                       </td>
-                      <td class=" ">{{employee.companyAddress}} 
+                      <td class=" ">{{employee.id}} 
                       </td>
-                      <td class=" last"><a href="#">View</a>
+                      <td class=" last"><button (click)="deleteEmployee(employee.id)">Delete</button>
                       </td>
                       </tr>
 

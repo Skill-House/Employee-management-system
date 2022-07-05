@@ -6,11 +6,16 @@ import { CompanyURLConstraints, EmployeeURLConstants, ProjectURLConstants } from
 export class AdminService{
     constructor(private http:HttpClient){
 
-    }
-    
+  }
+
     getAllEmployee(){
-        debugger;
         return this.http.get<any>(EmployeeURLConstants.GET_ALL_EMPLOYEE);
+    }
+    GetAllCompanies(){
+        return this.http.get<any>(CompanyURLConstants.GET_ALL_COMPANIES);
+    }
+    deleteEmployee(employeeId : number){
+        return this.http.delete<any>(EmployeeURLConstants.DELETE_EMPLOYEE+employeeId);
     }
     GetAllCompanies(){
         debugger;
