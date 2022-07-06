@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement_Web.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+   
+    [Route("api/Company")]
+
     public class CompanyController : ApiBaseController
     {
         private readonly CompanyBuisness companyBusiness;
@@ -28,7 +29,7 @@ namespace EmployeeManagement_Web.Controllers
             var alumnus = await companyBusiness.GetCompanyAsync(companyId);
             return Ok(alumnus);
         }
-        [HttpDelete(Name = "DeleteCompany")]
+        [HttpDelete("{companyId}")]
         public async Task<IActionResult> DeleteById(int companyId)
         {
             var alumnus = await companyBusiness.DeleteCompanyAsync(companyId);

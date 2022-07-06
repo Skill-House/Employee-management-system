@@ -18,4 +18,7 @@ export class AdminService{
     deleteEmployee(employeeId : number){
         return this.http.delete<any>(EmployeeURLConstants.DELETE_EMPLOYEE+employeeId);
     }
+    deleteCompany(companyId : number){
+        return this.http.delete<any>(CompanyURLConstants.DELETE_COMPANY+companyId);
+    }
 }

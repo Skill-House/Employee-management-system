@@ -13,6 +13,7 @@ export class EmployeeURLConstants {
 }
 
 export class CompanyURLConstants{
-    static GET_ALL_COMPANIES = apiUrl +'/company/GetAllCompanies';
+    static GET_ALL_COMPANIES = apiUrl +'/api/company/GetAllCompanies';
+    static DELETE_COMPANY =apiUrl+'/api/company/';
 }
 

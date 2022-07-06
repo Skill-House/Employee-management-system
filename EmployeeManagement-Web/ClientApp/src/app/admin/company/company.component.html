@@ -12,10 +12,14 @@
             <span class="input-group-btn">
               <button class="btn btn-default" type="button">Go!</button>
             </span>
-          </div>
+          </div>  
         </div>
       </div>
     </div>
+
+ <div class=" form-group pull-right top_search">
+  <button type="button" >Add Company</button>
+ </div>
 
     <div class="clearfix"></div>
 
@@ -77,13 +81,11 @@
                     <td class=" ">{{company.companyName}}</td>
                     <td class=" ">{{company.companyAddress}}</td>
                     <td class=" ">{{company.companyPhone}}</td>
-                    <td class=" last"><a href="#">View</a>
-                    </td>
+                    <td class=" last"><button (click)="deleteCompany(company.companyId)">Delete</button>
                   </tr>
                   
 
-                  
-                  
+          
                 </tbody>
               </table>
             </div>
