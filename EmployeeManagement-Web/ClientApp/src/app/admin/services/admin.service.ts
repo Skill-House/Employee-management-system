@@ -9,6 +9,7 @@ export class AdminService{
   }
 
     getAllEmployee(){
+        debugger
         return this.http.get<any>(EmployeeURLConstants.GET_ALL_EMPLOYEE);
     }
     

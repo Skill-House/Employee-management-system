@@ -27,7 +27,7 @@ namespace EmployeeManagement_Business
                     ProjectId = employee.ProjectId,
                     ProjectName = employee.ProjectName,
                     ProjectDescription = employee.ProjectDescription,
-                    Projectduration = employee.Projectduration,
+                    Projectduration = employee.ProjectDuration,
                 });
             }
             return employeeViewModelList;

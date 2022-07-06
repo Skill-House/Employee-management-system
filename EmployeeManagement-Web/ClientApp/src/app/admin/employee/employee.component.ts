@@ -4,36 +4,28 @@ import { AdminService } from '../services/admin.service';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  styleUrls: ['./employee.component.css'],
 })
 export class EmployeeComponent implements OnInit {
+  employeeData: any;
 
-  employeeData : any ;
-
-  constructor(private adminService : AdminService) {
-    
-   }
-
-  ngOnInit(): void {
+  constructor(private adminService: AdminService) {
+    this.getAllEmployees();
   }
 
-  getAllEmployees(){
-   
-    this.adminService.getAllEmployee().subscribe((e)=>
-    {
-        debugger;
-        this.employeeData = e ;
-    }
-    )
+  ngOnInit(): void {}
+
+  getAllEmployees() {
+    this.adminService.getAllEmployee().subscribe((e) => {
+      debugger;
+      this.employeeData = e;
+    });
   }
-  deleteEmployee(employeeId : number){
-      this.adminService.deleteEmployee(employeeId).subscribe((e)=>{
-        if(e==200)
-          console.log("Deleted Successfully")
-        else
-          console.log("This record is not Found")
-        this.getAllEmployees();
-      })
-      
+  deleteEmployee(employeeId: number) {
+    this.adminService.deleteEmployee(employeeId).subscribe((e) => {
+      if (e == 200) console.log('Deleted Successfully');
+      else console.log('This record is not Found');
+      this.getAllEmployees();
+    });
   }
 }
