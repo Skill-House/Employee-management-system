@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement_Web.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+    [Route("api/Company")]
     public class CompanyController : ApiBaseController
     {
         private readonly CompanyBuisness companyBusiness;

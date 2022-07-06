@@ -12,7 +12,7 @@ export class EmployeeURLConstants {
     static DELETE_EMPLOYEE = apiUrl + '/Employee/employeeId';
 }
 export class CompanyURLConstraints {
-    static GET_ALL_COMPANIES = apiUrl + '/Company/GetAllCompanies';
+    static GET_ALL_COMPANIES = apiUrl + '/api/Company/GetAllCompanies';
 }
 export class ProjectURLConstants{
     static GET_ALL_PROJECT =apiUrl +'/Project/GetAllProjects';
