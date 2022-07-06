@@ -4,9 +4,7 @@ import { CompanyURLConstraints, EmployeeURLConstants, ProjectURLConstants } from
 
 @Injectable({providedIn:'root'})
 export class AdminService{
-    constructor(private http:HttpClient){
-
-  }
+    constructor(private http:HttpClient){  }
 
     getAllEmployee(){
         return this.http.get<any>(EmployeeURLConstants.GET_ALL_EMPLOYEE);
@@ -23,5 +21,7 @@ export class AdminService{
         debugger;
         return this.http.get<any>(ProjectURLConstants.GET_ALL_PROJECT);
     }
-
+    editAllProject(){
+        return this.http.get<any>(ProjectURLConstants.EDIT_ALL_PROJECT)
+    }
 }

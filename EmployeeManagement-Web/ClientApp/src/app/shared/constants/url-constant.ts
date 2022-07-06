@@ -8,12 +8,13 @@ export class USERURLConstants {
     static GETALL = apiUrl + '/user/GetAllUser';
 }
 export class EmployeeURLConstants {
-    static GET_ALL_EMPLOYEE  = apiUrl + '/api/employee/GetAllEmployee';
-    static DELETE_EMPLOYEE = apiUrl + '/api/employee/';
+    static GET_ALL_EMPLOYEE  = apiUrl + 'api/Employee/GetAllEmployee';
+    static DELETE_EMPLOYEE = apiUrl + '/Employee/employeeId';
 }
 export class CompanyURLConstraints {
     static GET_ALL_COMPANIES = apiUrl + '/Company/GetAllCompanies';
 }
 export class ProjectURLConstants{
     static GET_ALL_PROJECT =apiUrl +'/Project/GetAllProjects';
+    static EDIT_ALL_PROJECT = apiUrl + '/Project/UpdateProject';
 }

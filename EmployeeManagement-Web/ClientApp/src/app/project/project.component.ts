@@ -25,5 +25,13 @@ export class ProjectComponent implements OnInit {
     }
     )
   }
+editAllProject(){
+  this.adminService.editAllProject().subscribe((p: any)=>
+  {
+    debugger;
+    this.projectData = p;
+  }
+  )
 
+}
 }

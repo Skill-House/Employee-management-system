@@ -10,9 +10,10 @@ export class EmployeeComponent implements OnInit {
 
   employeeData : any ;
 
-  constructor(private adminService : AdminService) {
-    
-   }
+  constructor(private adminService : AdminService)
+   {
+    this.getAllEmployees();
+  }
 
   ngOnInit(): void {
   }

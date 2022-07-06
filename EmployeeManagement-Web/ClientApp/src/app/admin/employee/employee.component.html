@@ -58,15 +58,15 @@
                   <thead>
                     <tr class="headings">
                       
-                      <th class="column-title">firstname </th>
-                      <th class="column-title">lastname  </th>
-                      <th class="column-title">Gender </th>
-                      <th class="column-title">Email </th>
-                      <th class="column-title">Phone </th>
-                      <th class="column-title">Date Created </th>
-                      <th class="column-title">Date Modiefied </th>
-                      <th class="column-title">Company Name </th>
-                      <th class="column-title">Company Address </th>
+                      <th class="column-title">firstname</th>
+                      <th class="column-title">lastname </th>
+                      <th class="column-title">Gender</th>
+                      <th class="column-title">Email</th>
+                      <th class="column-title">Phone</th>
+                      <th class="column-title">Date Created</th>
+                      <th class="column-title">Date Modiefied</th>
+                      <th class="column-title">Company Name</th>
+                      <th class="column-title">Company Address</th>
                       <th class="column-title no-link last"><span class="nobr">Action</span>
                       </th>
                       <th class="bulk-actions" colspan="7">
@@ -76,30 +76,19 @@
                   </thead>
 
                   <tbody>
-                    <tr class="even pointer" *ngFor="let employee of employeeData; let i = index">
-                      <td class=" ">{{employee.firstName}}
-                      </td>
-                      <td class=" ">{{employee.lastName}}
-                      </td>
-                      <td class=" ">{{employee.gender}}
-                      </td>
-                      <td class=" ">{{employee.email}}
-                      </td>
-                      <td class=" ">{{employee.phone}}
-                      </td>
-                      <td class=" ">{{employee.dateCreated}}
-                      </td>
-                      <td class=" ">{{employee.dateModified}}
-                      </td>
-                      <td class=" ">{{employee.companyName}} 
-                      </td>
-                      <td class=" ">{{employee.id}} 
-                      </td>
-                      <td class=" last"><button (click)="deleteEmployee(employee.id)">Delete</button>
-                      </td>
+                    <tr  *ngFor="let employee of employeeData" class="even pointer">
+                      <td class=" ">{{employee.firstName}}</td>
+                      <td class=" ">{{employee.lastName}}</td>
+                      <td class=" ">{{employee.gender}}</td>
+                      <td class=" ">{{employee.email}}</td>
+                      <td class=" ">{{employee.phone}} </td>
+                      <td class=" ">{{employee.dateCreated}}</td>
+                      <td class=" ">{{employee.dateModified}}</td>
+                      <td class=" ">{{employee.companyName}} </td>
+                      <td class=" ">{{employee.id}}</td>
+                      <td class=" last"><button (click)="deleteEmployee(employee.id)">Delete</button></td>
                       </tr>
-
-                  </tbody>
+                    </tbody>
                 </table>
               </div>
                       
