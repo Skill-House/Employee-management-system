@@ -9,6 +9,7 @@ import { AdminService } from '../admin/services/admin.service';
 })
 export class ProjectComponent implements OnInit {
   projectData: any;
+  EditData: any;
 
 
   constructor(private adminService:AdminService) {
@@ -29,7 +30,7 @@ editAllProject(){
   this.adminService.editAllProject().subscribe((p: any)=>
   {
     debugger;
-    this.projectData = p;
+    this.EditData = p;
   }
   )
 

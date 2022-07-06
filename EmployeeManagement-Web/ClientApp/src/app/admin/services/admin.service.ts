@@ -7,6 +7,7 @@ export class AdminService{
     constructor(private http:HttpClient){  }
 
     getAllEmployee(){
+        debugger;
         return this.http.get<any>(EmployeeURLConstants.GET_ALL_EMPLOYEE);
     }
     
