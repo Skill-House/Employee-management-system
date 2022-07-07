@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../services/admin.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -9,7 +9,7 @@ import { AdminService } from '../services/admin.service';
 export class EmployeeComponent implements OnInit {
   employeeData: any;
 
-  constructor(private adminService: AdminService) {
+    constructor(private adminService: AdminService, private router: Router) {
     this.getAllEmployees();
   }
 
@@ -21,11 +21,19 @@ export class EmployeeComponent implements OnInit {
       this.employeeData = e;
     });
   }
-  deleteEmployee(employeeId: number) {
-    this.adminService.deleteEmployee(employeeId).subscribe((e) => {
-      if (e == 200) console.log('Deleted Successfully');
-      else console.log('This record is not Found');
-      this.getAllEmployees();
-    });
+
+  deleteEmployee(employeeId : number){
+      this.adminService.deleteEmployee(employeeId).subscribe((e)=>{
+        if(e==200)
+          console.log("Deleted Successfully")
+        else
+          console.log("This record is not Found")
+        this.getAllEmployees();
+      })      
+  }
+
+  addEmployee(){
+    debugger;
+    this.router.navigate(["admin/Employee/add-employee"]);
   }
 }

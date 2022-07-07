@@ -1,26 +1,36 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { CompanyURLConstraints, EmployeeURLConstants, ProjectURLConstants } from "src/app/shared/constants/url-constant";
+import { map } from "rxjs";
+import { EmployeeURLConstants } from "src/app/shared/constants/url-constant";
+import { CompanyURLConstants, ProjectURLConstants } from "src/app/shared/constants/url-constant";
+import { EmployeeAddModel } from "../models/employee.model";
 
-@Injectable({providedIn:'root'})
-export class AdminService{
-    constructor(private http:HttpClient){
+@Injectable({ providedIn: 'root' })
+export class AdminService {
+    constructor(private http: HttpClient) {
 
-  }
+    }
 
-    getAllEmployee(){
-        debugger
+    getAllEmployee() {
         return this.http.get<any>(EmployeeURLConstants.GET_ALL_EMPLOYEE);
     }
-    
-    deleteEmployee(employeeId : number){
-        return this.http.delete<any>(EmployeeURLConstants.DELETE_EMPLOYEE+employeeId);
-    }
-    GetAllCompanies(){
+    GetAllCompanies() {
         debugger;
         return this.http.get<any>(CompanyURLConstraints.GET_ALL_COMPANIES);
     }
-    getAllProject(){
+    deleteEmployee(employeeId: number) {
+        return this.http.delete<any>(EmployeeURLConstants.DELETE_EMPLOYEE + employeeId);
+    }
+    saveEmployee(employeeModel: EmployeeAddModel) {
+        debugger;
+        return this.http.post<any>(EmployeeURLConstants.SAVE_EMPLOYEE, employeeModel)
+            .pipe(
+                map((result) =>{
+                    return result;
+                })
+            )
+    }
+    getAllProject() {
         debugger;
         return this.http.get<any>(ProjectURLConstants.GET_ALL_PROJECT);
     }
