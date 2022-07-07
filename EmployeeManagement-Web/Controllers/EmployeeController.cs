@@ -6,8 +6,8 @@ using System.Net;
 
 namespace EmployeeManagement_Web.Controllers
 {
-
-    [Route("api/Employee")]
+    [ApiController]
+    [Route("[controller]")]
     public class EmployeeController : ApiBaseController
     {
 

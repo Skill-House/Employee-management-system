@@ -20,6 +20,11 @@
             </span>
           </div>
         </div>
+        <div>
+          <button  class="btn btn-primary" (click)="addEmployee()" >
+            Add Employee Details 
+          </button>
+        </div>
       </div>
     </div>
 
@@ -51,8 +56,6 @@
             </div>
 
             <div class="x_content">
-
-
               <div class="table-responsive">
                 <table class="table table-striped jambo_table bulk_action">
                   <thead>
@@ -93,7 +96,7 @@
                       </td>
                       <td class=" ">{{employee.companyName}} 
                       </td>
-                      <td class=" ">{{employee.id}} 
+                      <td class=" ">{{employee.companyAddress}} 
                       </td>
                       <td class=" last"><button (click)="deleteEmployee(employee.id)">Delete</button>
                       </td>
@@ -102,8 +105,6 @@
                   </tbody>
                 </table>
               </div>
-                      
-                  
             </div>
           </div>
         </div>

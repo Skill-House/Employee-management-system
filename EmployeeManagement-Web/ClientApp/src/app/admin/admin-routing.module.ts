@@ -5,6 +5,7 @@ import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { CompanyComponent } from './company/company.component';
+import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
 const routes: Routes = [
  
 {
@@ -19,6 +20,10 @@ const routes: Routes = [
   path: 'Company',
   component: CompanyComponent
 },
+{
+  path: 'Employee/add-employee',
+  component: EmployeeAddComponent
+}
 ];
 
 @NgModule({
