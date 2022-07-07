@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace EmployeeManagement_Repository.Entities
 {
     public partial class Company

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EmployeeManagement_Repository.Entities;
 
-namespace EmployeeManagement_Repository
+namespace EmployeeManagement_Repository.Entities
 {
     public class CompanyRepository
     {
@@ -16,15 +16,15 @@ namespace EmployeeManagement_Repository
         {
             this.dbContext = dbContext;
         }
-
         public async Task Create(Company company)
         {
             dbContext.Companies.Add(company);
             await dbContext.SaveChangesAsync();
         }
-        public async Task<Company> GetById(int Id)
+
+       public async Task<Company> GetById(int Id)
         {
-            var company = dbContext.Companies.FirstOrDefault(e => e.CompanyId == Id);
+            var company= dbContext.Companies.FirstOrDefault(e=>e.CompanyId==Id);
             return company;
         }
         public async Task Delete(int companyId)

@@ -6,12 +6,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JwtInterceptor } from './core/service/jwt.interceptor';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProjectComponent } from './project/project.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,

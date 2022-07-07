@@ -4,23 +4,22 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  styleUrls: ['./employee.component.css'],
 })
 export class EmployeeComponent implements OnInit {
+  employeeData: any;
 
-  employeeData : any ;
-
-  constructor(private adminService : AdminService,private router : Router) {
-    
-   }
-
-  ngOnInit(): void {
+    constructor(private adminService: AdminService, private router: Router) {
+    this.getAllEmployees();
   }
 
-  getAllEmployees(){
-    this.adminService.getAllEmployee().subscribe((e)=>{
-        this.employeeData = e ;
-    })
+  ngOnInit(): void {}
+
+  getAllEmployees() {
+    this.adminService.getAllEmployee().subscribe((e) => {
+      debugger;
+      this.employeeData = e;
+    });
   }
 
   deleteEmployee(employeeId : number){

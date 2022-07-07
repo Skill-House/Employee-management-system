@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs";
 import { EmployeeURLConstants } from "src/app/shared/constants/url-constant";
-import { CompanyURLConstants } from "src/app/shared/constants/url-constant";
+import { CompanyURLConstants, ProjectURLConstants } from "src/app/shared/constants/url-constant";
 import { EmployeeAddModel } from "../models/employee.model";
 
 @Injectable({ providedIn: 'root' })
@@ -15,7 +15,8 @@ export class AdminService {
         return this.http.get<any>(EmployeeURLConstants.GET_ALL_EMPLOYEE);
     }
     GetAllCompanies() {
-        return this.http.get<any>(CompanyURLConstants.GET_ALL_COMPANIES);
+        debugger;
+        return this.http.get<any>(CompanyURLConstraints.GET_ALL_COMPANIES);
     }
     deleteEmployee(employeeId: number) {
         return this.http.delete<any>(EmployeeURLConstants.DELETE_EMPLOYEE + employeeId);
@@ -29,4 +30,9 @@ export class AdminService {
                 })
             )
     }
+    getAllProject() {
+        debugger;
+        return this.http.get<any>(ProjectURLConstants.GET_ALL_PROJECT);
+    }
+
 }

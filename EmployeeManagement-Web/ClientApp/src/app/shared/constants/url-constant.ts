@@ -12,8 +12,9 @@ export class EmployeeURLConstants {
     static DELETE_EMPLOYEE = apiUrl + '/employee/';
     static SAVE_EMPLOYEE = apiUrl + '/employee/SaveEmployee';
 }
-
-export class CompanyURLConstants{
-    static GET_ALL_COMPANIES = apiUrl +'/company/GetAllCompanies';
+export class CompanyURLConstraints {
+    static GET_ALL_COMPANIES = apiUrl + '/api/Company/GetAllCompanies';
 }
-
+export class ProjectURLConstants{
+    static GET_ALL_PROJECT =apiUrl +'/Project/GetAllProjects';
+}
