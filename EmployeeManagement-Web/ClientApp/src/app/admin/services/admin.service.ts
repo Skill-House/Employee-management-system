@@ -15,8 +15,7 @@ export class AdminService {
         return this.http.get<any>(EmployeeURLConstants.GET_ALL_EMPLOYEE);
     }
     GetAllCompanies() {
-        debugger;
-        return this.http.get<any>(CompanyURLConstraints.GET_ALL_COMPANIES);
+        return this.http.get<any>(CompanyURLConstants.GET_ALL_COMPANIES);
     }
     deleteEmployee(employeeId: number) {
         return this.http.delete<any>(EmployeeURLConstants.DELETE_EMPLOYEE + employeeId);

@@ -26,18 +26,18 @@ namespace EmployeeManagement_Web.Controllers
         {
              return await employeeBusiness.GetAllEmployeesAsync();
         }
-        [HttpGet(Name = "GetEmployee")]
+        [HttpGet("GetEmployee")]
         public async Task<IActionResult> GetById(int employeeId)
         {
             var alumnus = await employeeBusiness.GetEmployeeAsync(employeeId);
             return Ok(alumnus);
         }
-        [HttpPost(Name = "SaveEmployee")]
+        [HttpPost("SaveEmployee")]
         public async Task<HttpStatusCode> SaveEmployee(EmployeeAddModel employee)
         {
             return await employeeBusiness.SaveEmployeeAsync(employee);
         }
-        [HttpPut(Name = "UpdateEmployee")]
+        [HttpPut("UpdateEmployee")]
         public async Task<HttpStatusCode> UpdateEmployee(Employee employee)
         {
             return await employeeBusiness.UpdateEmployeeAsync(employee);
