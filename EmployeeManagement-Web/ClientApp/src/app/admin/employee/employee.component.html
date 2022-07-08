@@ -20,6 +20,11 @@
             </span>
           </div>
         </div>
+        <div>
+          <button  class="btn btn-primary" (click)="addEmployee()" >
+            Add Employee Details 
+          </button>
+        </div>
       </div>
     </div>
 
@@ -51,8 +56,6 @@
             </div>
 
             <div class="x_content">
-
-
               <div class="table-responsive">
                 <table class="table table-striped jambo_table bulk_action">
                   <thead>
@@ -76,23 +79,31 @@
                   </thead>
 
                   <tbody>
-                    <tr  *ngFor="let employee of employeeData" class="even pointer">
-                      <td class=" ">{{employee.firstName}}</td>
-                      <td class=" ">{{employee.lastName}}</td>
-                      <td class=" ">{{employee.gender}}</td>
-                      <td class=" ">{{employee.email}}</td>
-                      <td class=" ">{{employee.phone}} </td>
-                      <td class=" ">{{employee.dateCreated}}</td>
-                      <td class=" ">{{employee.dateModified}}</td>
-                      <td class=" ">{{employee.companyName}} </td>
-                      <td class=" ">{{employee.id}}</td>
-                      <td class=" last"><button (click)="deleteEmployee(employee.id)">Delete</button></td>
+                    <tr class="even pointer" *ngFor="let employee of employeeData; let i = index">
+                      <td class=" ">{{employee.firstName}}
+                      </td>
+                      <td class=" ">{{employee.lastName}}
+                      </td>
+                      <td class=" ">{{employee.gender}}
+                      </td>
+                      <td class=" ">{{employee.email}}
+                      </td>
+                      <td class=" ">{{employee.phone}}
+                      </td>
+                      <td class=" ">{{employee.dateCreated}}
+                      </td>
+                      <td class=" ">{{employee.dateModified}}
+                      </td>
+                      <td class=" ">{{employee.companyName}} 
+                      </td>
+                      <td class=" ">{{employee.companyAddress}} 
+                      </td>
+                      <td class=" last"><button (click)="deleteEmployee(employee.id)">Delete</button>
+                      </td>
                       </tr>
                     </tbody>
                 </table>
               </div>
-                      
-                  
             </div>
           </div>
         </div>

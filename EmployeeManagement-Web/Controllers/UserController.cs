@@ -35,17 +35,17 @@ namespace EmployeeManagement_Web.Controllers
         {            var usrs = await userBusiness.GetUserAsync(Id);
             return Ok(usrs);
         }
-        [HttpPost(Name = "SaveUser")]
+        [HttpPost("SaveUser")]
         public async Task<HttpStatusCode> SaveUser(UserAddModel user)
         {
             return await userBusiness.SaveUserAsync(user);
         }
-        [HttpPut(Name = "UpdateUser")]
+        [HttpPut("UpdateUser")]
         public async Task<HttpStatusCode> UpdateUser(User user)
         {
             return await userBusiness.UpdateUserAsync(user);
         }
-        [HttpDelete(Name = "DeleteUser")]
+        [HttpDelete("DeleteUser")]
         public async Task<IActionResult> DeleteById(int Id)
         {
             var usrs = await userBusiness.DeleteUserAsync(Id);
