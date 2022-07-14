@@ -1,0 +1,54 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<div class="right_col" role="main">
+    <div class="">
+      <div class="page-title">
+        <div class="title_left">
+          <h3>Tables <small></small></h3>
+        </div>
+  
+        <div class="title_right">
+          <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="clearfix"></div>
+  
+      <div class="row">
+        <div class="clearfix"></div>
+  
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+              <div class="table-responsive">
+                    <div class="testbox">
+                      <form [formGroup]="saveCompanyForm" (ngSubmit)="createCompany()">                    
+                        <div class="item">
+                          <label for="cname">Company Name<span>*</span></label>
+                          <input id="cname" formControlName="cname" type="text" />
+                        </div>
+                        <div class="item">
+                          <label for="address">Company Address<span>*</span></label>
+                          <input id="address"  formControlName="address" type="text" name="address"/>
+                        </div>                  
+                        <div class="item">
+                          <label for="phone">Company Phone<span>*</span></label>
+                          <input id="phone" formControlName="phone" type="text" name="phone" />
+                        </div>
+                        <div class="btn-block">
+                          <button class="btn btn-primary btn-lg" type="submit" href="/">SUBMIT</button>
+                          <button class="btn btn-primary btn-lg" type="reset" href="/">RESET</button>
+                        </div>
+                      </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
