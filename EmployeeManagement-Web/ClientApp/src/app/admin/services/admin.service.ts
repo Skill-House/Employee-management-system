@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs";
+import { map, Observable } from "rxjs";
 import { EmployeeURLConstants } from "src/app/shared/constants/url-constant";
 import { CompanyURLConstants, ProjectURLConstants } from "src/app/shared/constants/url-constant";
 import { EmployeeAddModel } from "../models/employee.model";
@@ -43,7 +43,20 @@ export class AdminService {
                 })
             )
     }
-    getAllProject() {        return this.http.get<any>(ProjectURLConstants.GET_ALL_PROJECT);
+
+    getCompanyById(id: number): Observable<any>{
+        return this.http.get<any>(CompanyURLConstants.GET_COMPANY_BY_ID+id)
+    }
+    updateCompany(companyModel: CompanyAddModel){
+        return this.http.put<any>(CompanyURLConstants.UPDATE_COMPANY,companyModel)
+        .toPromise()
+        .then((result)=>{
+            return result;
+        })
+    }
+    
+    getAllProject() {        
+        return this.http.get<any>(ProjectURLConstants.GET_ALL_PROJECT);
     }
 
 }

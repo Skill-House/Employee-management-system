@@ -5,7 +5,6 @@
         <h3>Tables <small></small></h3>
       </div>
       <div class="title_right">
-        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
@@ -15,19 +14,25 @@
         </div>
       </div>
     </div>
-
+<
  <div class=" form-group pull-right top_search">
   <button type="button" (click)="addCompany()">Add Company</button>
  </div>
-
+<app-company-edit 
+*ngIf="isUpdateCompany"
+[companyId]="companyId"
+></app-company-edit>
+ 
+ 
     <div class="clearfix"></div>
 
     <div class="row">
 
       <div class="clearfix"></div>
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-          <div class="x_title">
+  
+                  <div class="clearfix"></div>
+            
+          
             <h2>Table design <small>Custom design</small></h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -68,7 +73,8 @@
                     <td class=" ">{{company.companyName}}</td>
                     <td class=" ">{{company.companyAddress}}</td>
                     <td class=" ">{{company.companyPhone}}</td>
-                    <td class=" last"><button (click)="deleteCompany(company.companyId)">Delete</button>
+                    <td class=" last"><button (click)="updateCompany(company.companyId)">Edit</button>
+                    <button (click)="deleteCompany(company.companyId)">Delete</button></td>
                   </tr>
 
 

@@ -16,9 +16,8 @@ export class CompanyURLConstants {
     static GET_ALL_COMPANIES = apiUrl + '/company/GetAllCompanies';
     static DELETE_COMPANY  = apiUrl + '/company/';
     static CREATE_COMPANY = apiUrl + '/company/CreateCompany';
-
-
-
+    static GET_COMPANY_BY_ID = apiUrl + '/company/GetCompany/';
+    static UPDATE_COMPANY = apiUrl + '/company/UpdateCompany';
 }
 
 export class ProjectURLConstants{
