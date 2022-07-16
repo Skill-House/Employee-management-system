@@ -22,7 +22,7 @@ namespace EmployeeManagement_Web.Controllers
         {
             return await companyBusiness.CreateCompany(company);
         }
-        [HttpGet(Name = "GetCompany")]
+        [HttpGet("GetCompany")]
         public async Task<IActionResult> GetById(int companyId)
         {
             var company = await companyBusiness.GetCompanyAsync(companyId);
@@ -41,7 +41,7 @@ namespace EmployeeManagement_Web.Controllers
             return await companyBusiness.GetAllCompanyAsync();
         }
 
-        [HttpPut(Name = "UpdateCompany")]
+        [HttpPut("UpdateCompany")]
         public async Task<HttpStatusCode> UpdateCompany(CompanyUpdateModel company)
         {
             return await companyBusiness.UpdateCompanyAsync(company);

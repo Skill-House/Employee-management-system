@@ -11,7 +11,8 @@ import { AdminService } from '../services/admin.service';
 export class CompanyComponent implements OnInit {
 
   companyData: any ;
-
+  isUpdateCompany: boolean=false;
+  companyId: number=0;
 
   constructor(private adminService : AdminService, private router:Router) {
 
@@ -19,6 +20,7 @@ export class CompanyComponent implements OnInit {
    }
 
   ngOnInit(): void {
+   
   }
 
   getAllCompanies()
@@ -40,8 +42,18 @@ export class CompanyComponent implements OnInit {
     })      
 }
 
+updateCompany(companyId: number){
+debugger;
+  this.companyId=companyId;
+  this.isUpdateCompany=true;
+
+  
+}
+
 addCompany(){
   debugger;
   this.router.navigate(["admin/Company/add-company"]);
 }
+
+
 }
