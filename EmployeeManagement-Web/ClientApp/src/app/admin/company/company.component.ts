@@ -46,13 +46,16 @@ updateCompany(companyId: number){
 debugger;
   this.companyId=companyId;
   this.isUpdateCompany=true;
-
-  
 }
 
 addCompany(){
   debugger;
   this.router.navigate(["admin/Company/add-company"]);
+}
+
+closeModelEvent(){
+  debugger;
+  this.isUpdateCompany=false;
 }
 
 
