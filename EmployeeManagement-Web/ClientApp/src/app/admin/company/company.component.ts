@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from '../services/admin.service';
 
 
@@ -10,14 +11,16 @@ import { AdminService } from '../services/admin.service';
 export class CompanyComponent implements OnInit {
 
   companyData: any ;
+  isUpdateCompany: boolean=false;
+  companyId: number=0;
 
-
-  constructor(private adminService : AdminService) {
+  constructor(private adminService : AdminService, private router:Router) {
 
     this.getAllCompanies();
    }
 
   ngOnInit(): void {
+   
   }
 
   getAllCompanies()
@@ -27,4 +30,30 @@ export class CompanyComponent implements OnInit {
       this.companyData = c;
   })
   }
+
+  deleteCompany(companyId : number){
+    debugger;
+    this.adminService.deleteCompany(companyId).subscribe((c)=>{
+      if(c==200)
+        console.log("Deleted Successfully")
+      else
+        console.log("This record is not Found")
+      this.getAllCompanies();
+    })      
+}
+
+updateCompany(companyId: number){
+debugger;
+  this.companyId=companyId;
+  this.isUpdateCompany=true;
+
+  
+}
+
+addCompany(){
+  debugger;
+  this.router.navigate(["admin/Company/add-company"]);
+}
+
+
 }

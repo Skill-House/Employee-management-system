@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement_Web.Controllers
 {
-    [Route("api/Company")]
+    [ApiController]
+    [Route("[controller]")]
     public class CompanyController : ApiBaseController
     {
         private readonly CompanyBuisness companyBusiness;
@@ -21,18 +22,18 @@ namespace EmployeeManagement_Web.Controllers
         {
             return await companyBusiness.CreateCompany(company);
         }
-        [HttpGet(Name = "GetCompany")]
+        [HttpGet("GetCompany")]
         public async Task<IActionResult> GetById(int companyId)
         {
-            var alumnus = await companyBusiness.GetCompanyAsync(companyId);
-            return Ok(alumnus);
+            var company = await companyBusiness.GetCompanyAsync(companyId);
+            return Ok(company);
         }
 
-        [HttpDelete("DeleteByID")]
+        [HttpDelete("{companyId}")]
         public async Task<IActionResult> DeleteByID(int companyId)
         {
-            var alumnus = await companyBusiness.DeleteCompanyAsync(companyId);
-            return Ok(alumnus);
+            var delCompany = await companyBusiness.DeleteCompanyAsync(companyId);
+            return Ok(delCompany);
         }
         [HttpGet("GetAllCompanies")]
         public async Task<List<Company>> GetAllCompanies()
@@ -40,13 +41,10 @@ namespace EmployeeManagement_Web.Controllers
             return await companyBusiness.GetAllCompanyAsync();
         }
 
-        [HttpPut(Name = "UpdateCompany")]
+        [HttpPut("UpdateCompany")]
         public async Task<HttpStatusCode> UpdateCompany(CompanyUpdateModel company)
         {
             return await companyBusiness.UpdateCompanyAsync(company);
         }
-
-
-
     }
 }

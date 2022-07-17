@@ -13,8 +13,13 @@ export class EmployeeURLConstants {
     static SAVE_EMPLOYEE = apiUrl + '/employee/SaveEmployee';
 }
 export class CompanyURLConstants {
-    static GET_ALL_COMPANIES = apiUrl + '/api/Company/GetAllCompanies';
+    static GET_ALL_COMPANIES = apiUrl + '/company/GetAllCompanies';
+    static DELETE_COMPANY  = apiUrl + '/company/';
+    static CREATE_COMPANY = apiUrl + '/company/CreateCompany';
+    static GET_COMPANY_BY_ID = apiUrl + '/company/GetCompany/';
+    static UPDATE_COMPANY = apiUrl + '/company/UpdateCompany';
 }
+
 export class ProjectURLConstants{
     static GET_ALL_PROJECT =apiUrl +'/Project/GetAllProjects';
     static EDIT_ALL_PROJECT = apiUrl + '/Project/UpdateProject';

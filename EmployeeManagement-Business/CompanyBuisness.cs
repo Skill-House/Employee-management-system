@@ -14,9 +14,12 @@ namespace EmployeeManagement_Business
     {
         private readonly CompanyRepository companyRepository;
 
-        public CompanyBuisness(CompanyRepository companyRepository)
+        private readonly EmployeeRepository employeeRepository;
+
+        public CompanyBuisness(CompanyRepository companyRepository, EmployeeRepository employeeRepository)
         {
             this.companyRepository = companyRepository;
+            this.employeeRepository = employeeRepository;
         }
 
         public async Task<HttpStatusCode> CreateCompany(CompanyAddModel company)
@@ -30,8 +33,26 @@ namespace EmployeeManagement_Business
     }
         public async Task<HttpStatusCode> DeleteCompanyAsync(int Id)
         {
-            await companyRepository.Delete(Id);
-            return HttpStatusCode.OK;
+            var empPresent = 0;
+            var existingemployee = this.employeeRepository.GetAllEmployeesAsync();
+
+            foreach (var item in existingemployee.Result)
+            {
+                if (item.CompanyId == Id)
+                {
+                    empPresent = 1;
+                    break;
+                }
+            }
+            if (empPresent == 1)
+            {
+                return HttpStatusCode.InternalServerError;
+            }
+            else
+            {
+                await companyRepository.Delete(Id);
+                return HttpStatusCode.OK;
+            }
         }
         public async Task<Company> GetCompanyAsync(int Id)
         {
