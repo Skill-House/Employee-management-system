@@ -14,6 +14,7 @@ namespace EmployeeManagement_Business
             services.AddTransient<CompanyBuisness>();
             services.AddTransient<EmployeeBuisness>();
             services.AddTransient<ProjectBuisness>();
+            services.AddTransient<RolesBuisness>();
         }
     }
 }

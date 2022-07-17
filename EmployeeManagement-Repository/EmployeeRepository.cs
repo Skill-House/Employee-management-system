@@ -26,7 +26,10 @@ namespace EmployeeManagement_Repository
                 await this.dbContext.SaveChangesAsync();
             }
         }
-
+        public async Task<List<Employee>> GetAllEmployeesAsync()
+        {
+            return dbContext.Employees.Include(x => x.Company).ToList();
+        }
         public async Task<Employee> GetById(int Id)
         {
             var employee = dbContext.Employees.FirstOrDefault(e => e.Id == Id);
@@ -42,9 +45,6 @@ namespace EmployeeManagement_Repository
                 await this.dbContext.SaveChangesAsync();
             }
         }
-        public async Task<List<Employee>> GetAllEmployeesAsync()
-        {
-            return dbContext.Employees.Include(x=>x.Company).ToList();
-        }
+       
     }
 }

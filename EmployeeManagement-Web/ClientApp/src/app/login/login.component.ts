@@ -11,6 +11,7 @@ import { AuthenticationService } from '../core/service/authentication.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  
   submitted: Boolean = false;
 
   constructor( private formBuilder: FormBuilder,  private authenticationService: AuthenticationService,private router: Router,) { }
@@ -20,11 +21,15 @@ export class LoginComponent implements OnInit {
       username: ["", Validators.required],
       password: ["", Validators.required],
     });
-    debugger
-  }
+    debugger;
+  
+  
+}
   get f(): { [key: string]: AbstractControl } {
     return this.loginForm.controls;
-  }
+   
+     }
+     
   login() {
 
     this.submitted = true;
@@ -38,6 +43,11 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["/admin"]);
       
         })
+
+   
+
+
+    }
   }
 
-}
+

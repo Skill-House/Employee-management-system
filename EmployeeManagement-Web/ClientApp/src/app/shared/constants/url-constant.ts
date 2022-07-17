@@ -19,3 +19,6 @@ export class ProjectURLConstants{
     static GET_ALL_PROJECT =apiUrl +'/Project/GetAllProjects';
     static EDIT_ALL_PROJECT = apiUrl + '/Project/UpdateProject';
 }
+export class RoleURLConstants{
+    
+}
