@@ -22,7 +22,6 @@ export class CompanyEditComponent implements OnInit {
       address: ["", Validators.required],
       companyPhone: ["", Validators.required],
     });
-debugger;
    this.getCompanyById(this.companyId);
   }
 
