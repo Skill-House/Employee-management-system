@@ -46,7 +46,9 @@ namespace EmployeeManagement_Repository.Entities
             var comp = dbContext.Companies.Where(h => h.CompanyId == company.CompanyId).FirstOrDefault();
             if (comp != null)
             {
-                comp.CompanyName = company.CompanyName; 
+                comp.CompanyName = company.CompanyName;
+                comp.CompanyAddress = company.CompanyAddress;
+                comp.CompanyPhone = company.CompanyPhone;
                 await this.dbContext.SaveChangesAsync();
             }
         }

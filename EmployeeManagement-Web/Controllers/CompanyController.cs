@@ -22,7 +22,7 @@ namespace EmployeeManagement_Web.Controllers
         {
             return await companyBusiness.CreateCompany(company);
         }
-        [HttpGet("GetCompany")]
+        [HttpGet("GetCompany/{companyId}")]
         public async Task<IActionResult> GetById(int companyId)
         {
             var company = await companyBusiness.GetCompanyAsync(companyId);
