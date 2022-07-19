@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <form>
  <table><h1>PROJECT</h1>
  <th class="column-title">Project Id</th>
@@ -10,3 +11,25 @@
  <input type="text" value="id">
 </table>
 </form>
+=======
+<div>
+    <form [formGroup]="editFormGroup" (ngSubmit)="editProject()">                    
+      <section>
+          <h1>Edit Project</h1>
+          <div>
+            <input type="text" formControlName="projectName" class="form-control" placeholder="Project Name" required="" />
+          </div>
+          <div>
+            <input type="text" formControlName="projectDescription" class="form-control" placeholder="Project Description" required="" />
+          </div>
+          <div>
+            <input type="text" formControlName="projectDuration" class="form-control" placeholder="Project Duration" required="" />
+          </div>
+          <div>
+            <button type="submit" class = "btn-primary">Update </button>
+            <button type="reset" class = "btn-secondary">Reset</button>
+          </div>
+        </section>
+    </form>
+  </div>
+>>>>>>> origin/dev

@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class ProjectComponent implements OnInit 
 {
   projectData: any;
+  isUpdateProject: boolean = false;
+  projectId: number = 0;
 
   constructor(private adminService:AdminService, private router:Router) {
     this.getAllProject();
@@ -20,6 +22,7 @@ export class ProjectComponent implements OnInit
   getAllProject(){
     this.adminService.getAllProject().subscribe((p)=>
     {
+<<<<<<< HEAD
        this.projectData = p;
     }
     )
@@ -35,3 +38,29 @@ this.router.navigate(["Project/edit-project"])
 
 
 
+=======
+      this.projectData = p;
+    }
+    )
+  }
+
+  deleteProject(projectid: number){
+    this.adminService.deleteProject(projectid).subscribe((d)=>{
+      if (d == 200)
+        console.log("Deleted Successfully")
+      else
+        console.log("This record is not Found")
+      this.getAllProject();
+    })
+    }
+
+    updateProject(projectId: number){
+      this.projectId=projectId;
+      this.isUpdateProject=true;
+  }
+
+  closeModelEvent() {
+    this.isUpdateProject = false;
+  }
+}
+>>>>>>> origin/dev

@@ -10,50 +10,47 @@ import { AdminService } from '../services/admin.service';
 })
 export class CompanyComponent implements OnInit {
 
-  companyData: any ;
-  isUpdateCompany: boolean=false;
-  companyId: number=0;
+  companyData: any;
+  isUpdateCompany: boolean = false;
+  companyId: number = 0;
 
-  constructor(private adminService : AdminService, private router:Router) {
+  constructor(private adminService: AdminService, private router: Router) {
 
     this.getAllCompanies();
-   }
+  }
 
   ngOnInit(): void {
-   
+
   }
 
-  getAllCompanies()
-  {
-    this.adminService.GetAllCompanies().subscribe((c)=>
-    {
+  getAllCompanies() {
+    this.adminService.GetAllCompanies().subscribe((c) => {
       this.companyData = c;
-  })
+    })
   }
 
-  deleteCompany(companyId : number){
-    debugger;
-    this.adminService.deleteCompany(companyId).subscribe((c)=>{
-      if(c==200)
+  deleteCompany(companyId: number) {
+
+    this.adminService.deleteCompany(companyId).subscribe((c) => {
+      if (c == 200)
         console.log("Deleted Successfully")
       else
         console.log("This record is not Found")
       this.getAllCompanies();
-    })      
-}
+    })
+  }
 
-updateCompany(companyId: number){
-debugger;
-  this.companyId=companyId;
-  this.isUpdateCompany=true;
+  updateCompany(companyId: number) {
+    this.companyId = companyId;
+    this.isUpdateCompany = true;
+  }
 
-  
-}
+  addCompany() {
+    this.router.navigate(["admin/Company/add-company"]);
+  }
 
-addCompany(){
-  debugger;
-  this.router.navigate(["admin/Company/add-company"]);
-}
-
+  closeModelEvent() {
+    this.isUpdateCompany = false;
+  }
 
 }

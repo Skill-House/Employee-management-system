@@ -1,18 +1,20 @@
 <div>
+  <form [formGroup]="editFormGroup" (ngSubmit)="editCompany()">                    
     <section>
         <h1>Edit Company</h1>
         <div>
-          <input type="text" class="form-control" placeholder="Company Name" required="" />
+          <input type="text" formControlName="companyName" class="form-control" placeholder="Company Name" required="" />
         </div>
         <div>
-          <input type="text" class="form-control" placeholder="Company Address" required="" />
+          <input type="text" formControlName="address"class="form-control" placeholder="Company Address" required="" />
         </div>
         <div>
-          <input type="text" class="form-control" placeholder="Phone Number" required="" />
+          <input type="text" formControlName="companyPhone"class="form-control" placeholder="Phone Number" required="" />
         </div>
         <div>
-          <button type="button" class = "btn-primary">Update </button>
-          <button type="button" class = "btn-secondary">Reset</button>
+          <button type="submit" class = "btn-primary">Update </button>
+          <button type="reset" class = "btn-secondary">Reset</button>
         </div>
       </section>
+  </form>
 </div>

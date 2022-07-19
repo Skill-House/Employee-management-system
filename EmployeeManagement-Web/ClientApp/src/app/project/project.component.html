@@ -24,6 +24,15 @@
       <div class="clearfix"></div>
   
       <div class="row">
+<<<<<<< HEAD
+=======
+       
+      <app-project-edit *ngIf="isUpdateProject"
+        [projectId]="projectId"
+        (closeModelEvent)="closeModelEvent()"
+        (getAllProject)="getAllProject()"></app-project-edit>
+    
+>>>>>>> origin/dev
         <div class="clearfix"></div>
       <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
@@ -72,6 +81,7 @@
                       <td class=" ">{{project.projectId}}</td>
                       <td class=" ">{{project.projectName}}</td>
                       <td class=" ">{{project.projectDescription}}</td>
+<<<<<<< HEAD
                       <td class=" ">{{project.projectDuration}}</td>
                       <td class=" last"><button>Edit</button>
                       <td class=" last"><a href="#">View</a>
@@ -81,6 +91,12 @@
   
                     
                     
+=======
+                      <td class=" ">{{project.projectduration}}</td>
+                        <td class=" last"><button (click)="updateProject(project.projectId)">Edit</button>
+                      <button (click)="deleteProject(project.projectId)">Delete</button>
+                    </tr>        
+>>>>>>> origin/dev
                   </tbody>
                 </table>
               </div>

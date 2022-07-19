@@ -1,0 +1,35 @@
+<div>
+    <section>
+        <h1>Edit Employee Details</h1>
+        <form [formGroup]="editFormGroup" (ngSubmit)="editEmployee()">
+        <div>
+          <input type="text" class="form-control" formControlName="firstName" placeholder="first name" required="" />
+        </div>
+        <div>
+          <input type="text" class="form-control" formControlName="lastName" placeholder="last name" required="" />
+        </div>
+        <div>
+            <label>Gender</label><br>                              
+            <input type="radio" formControlName="gender" value="male" id="radio_1" name="gender"/><label>Male</label>
+            <input  type="radio" formControlName="gender" value="female" id="radio_2" name="gender"/><label>Female</label>
+        </div>
+        <div>
+            <label for="name">Company name <span>*</span></label>                          
+            <select class="form-control" formControlName="companyName">
+            <option *ngFor="let company of companyData" [value]="company.companyId">{{company.companyName}}</option>
+            </select> 
+        </div>
+        <div>
+            <input id="email" class="form-control" formControlName="email" type="email" name="email" placeholder="email"/>
+        </div>
+        <div>
+            <input id="phone" class="form-control" formControlName="phone" type="text" name="phone" placeholder="phone number" />
+        </div>
+        <br>
+        <div>
+          <button type="button" class = "btn-primary" type="submit" >Update </button>
+          <button type="button" class = "btn-secondary" type="reset" >Reset</button>
+        </div>
+    </form>
+      </section>
+</div>

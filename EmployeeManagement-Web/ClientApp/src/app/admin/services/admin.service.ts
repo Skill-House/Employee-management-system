@@ -5,8 +5,10 @@ import { EmployeeURLConstants, RoleURLConstants, USERURLConstants } from "src/ap
 import { CompanyURLConstants, ProjectURLConstants } from "src/app/shared/constants/url-constant";
 import { EmployeeAddModel } from "../models/employee.model";
 import { CompanyAddModel } from "../models/company.model";
+import { ProjectEditModel } from "../models/project.model";
 import { ProjectModel } from "../models/project.model";
 import { UserModel } from "../models/user.model";
+
 
 
 @Injectable({ providedIn: 'root' })
@@ -28,11 +30,15 @@ export class AdminService {
         return this.http.delete<any>(CompanyURLConstants.DELETE_COMPANY + companyId);
     }
 
+    deleteProject(projectId: number) {
+        return this.http.delete<any>(ProjectURLConstants.DELETE_PROJECT + projectId);
+    }
+
     saveEmployee(employeeModel: EmployeeAddModel) {
-        debugger;
+
         return this.http.post<any>(EmployeeURLConstants.SAVE_EMPLOYEE, employeeModel)
             .pipe(
-                map((result) =>{
+                map((result) => {
                     return result;
                 })
             )
@@ -40,46 +46,72 @@ export class AdminService {
     createCompany(companyModel: CompanyAddModel) {
         return this.http.post<any>(CompanyURLConstants.CREATE_COMPANY, companyModel)
             .pipe(
-                map((result) =>{
+                map((result) => {
                     return result;
                 })
             )
     }
 
-    getCompanyById(id: number): Observable<any>{
-        return this.http.get<any>(CompanyURLConstants.GET_COMPANY_BY_ID+id)
+    getCompanyById(id: number): Observable<any> {
+        return this.http.get<any>(CompanyURLConstants.GET_COMPANY_BY_ID + id)
     }
-    updateCompany(companyModel: CompanyAddModel){
-        return this.http.put<any>(CompanyURLConstants.UPDATE_COMPANY,companyModel)
+    updateCompany(companyModel: CompanyAddModel) {
+        
+        return this.http.put<any>(CompanyURLConstants.UPDATE_COMPANY, companyModel)
+            .toPromise()
+            .then((result) => {
+                return result;
+            })
+    }
+
+    getAllProject() {
+        return this.http.get<any>(ProjectURLConstants.GET_ALL_PROJECT);
+    }
+    getAllRoles() {
+        return this.http.get<any>(RoleURLConstants.GET_ALL_ROLES);
+    }
+
+    getProjectById(projectId: number): Observable<any> {
+        return this.http.get<any>(ProjectURLConstants.GET_PROJECT_BY_ID + projectId);
+    }
+
+    updateProject(projectEditModel: ProjectEditModel) {
+        return this.http.put<any>(ProjectURLConstants.UPDATE_PROJECT, projectEditModel)
+            .toPromise()
+            .then((result) => {
+                return result;
+            })
+    }
+
+    getEmployeeById(id: number): Observable<any>{
+        return this.http.get<any>(EmployeeURLConstants.GET_EMPLOYEE_BY_ID+id)
+    }
+    updateEmployee(employeeAddModel: EmployeeAddModel){
+        return this.http.put<any>(EmployeeURLConstants.UPDATE_EMPLOYEE,employeeAddModel)
         .toPromise()
         .then((result)=>{
             return result;
         })
     }
-     getAllProject() {      
-        return this.http.get<any>(ProjectURLConstants.GET_ALL_PROJECT);
-    }
-    getAllRoles(){
-        return this.http.get<any>(RoleURLConstants.GET_ALL_ROLES);
-    }
-    saveProject(projectModel:ProjectModel){
-        debugger;
-        return this.http.post<any>(ProjectURLConstants.SAVE_PROJECT, projectModel)
+}
+saveProject(projectModel: ProjectModel){
+    debugger;
+    return this.http.post<any>(ProjectURLConstants.SAVE_PROJECT, projectModel)
         .pipe(
-            map((result) =>{
-             return result;
+            map((result) => {
+                return result;
             })
 
         )
-    }
-    saveUser(userModel:UserModel){
-        debugger;
-        return this.http.post<any>(USERURLConstants.SAVE_USER,userModel)
+}
+saveUser(userModel: UserModel){
+    debugger;
+    return this.http.post<any>(USERURLConstants.SAVE_USER, userModel)
         .pipe(
-            map((result) =>{
+            map((result) => {
                 return result;
 
             })
         )
-    }
+}
 }
