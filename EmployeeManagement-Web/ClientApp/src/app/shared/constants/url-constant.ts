@@ -23,5 +23,8 @@ export class CompanyURLConstants {
 }
 
 export class ProjectURLConstants{
-    static GET_ALL_PROJECT =apiUrl +'/Project/GetAllProjects';
+    static GET_ALL_PROJECT =apiUrl +'/project/GetAllProjects';
+    static DELETE_PROJECT  = apiUrl + '/project/';
+    static GET_PROJECT_BY_ID = apiUrl + '/project/GetProject/';
+    static UPDATE_PROJECT = apiUrl + '/project/UpdateProject';
 }
