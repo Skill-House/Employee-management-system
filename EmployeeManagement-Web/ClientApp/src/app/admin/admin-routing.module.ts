@@ -8,6 +8,8 @@ import { CompanyComponent } from './company/company.component';
 import { ProjectComponent } from '../project/project.component';
 import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
 import { CompanyAddComponent } from './company/company-add/company-add.component';
+import { ProjectAddComponent } from '../project/project-add/project-add.component';
+import { LoginComponent } from '../login/login.component';
 const routes: Routes = [
  
 {
@@ -25,6 +27,19 @@ const routes: Routes = [
 {
   path: 'Project',
   component:  ProjectComponent
+},
+{
+  path: 'Project/add-project',
+  component:  ProjectAddComponent
+},
+
+{
+  path: 'Roles',
+  component: LoginComponent
+},
+{
+  path: 'User/add-user',
+  component: LoginComponent
 },
 {
   path: 'Employee/add-employee',

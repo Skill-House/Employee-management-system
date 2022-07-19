@@ -6,6 +6,7 @@ export class LoginURLConstants {
 }
 export class USERURLConstants {
     static GETALL = apiUrl + '/user/GetAllUser';
+    static SAVE_USER = apiUrl +'/user/SaveUser';
 }
 export class EmployeeURLConstants {
     static GET_ALL_EMPLOYEE  = apiUrl + '/employee/GetAllEmployee';
@@ -21,9 +22,10 @@ export class CompanyURLConstants {
 }
 
 export class ProjectURLConstants{
-    static GET_ALL_PROJECT =apiUrl +'/Project/GetAllProjects';
+    static GET_ALL_PROJECT = apiUrl +'/Project/GetAllProjects';
     static EDIT_ALL_PROJECT = apiUrl + '/Project/UpdateProject';
+    static SAVE_PROJECT = apiUrl + '/Project/SaveProject';
 }
 export class RoleURLConstants{
-    
+    static GET_ALL_ROLES = apiUrl +'/Role/GetAllRoles';
 }

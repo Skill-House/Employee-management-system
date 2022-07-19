@@ -1,10 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Observable } from "rxjs";
-import { EmployeeURLConstants } from "src/app/shared/constants/url-constant";
+import { EmployeeURLConstants, RoleURLConstants, USERURLConstants } from "src/app/shared/constants/url-constant";
 import { CompanyURLConstants, ProjectURLConstants } from "src/app/shared/constants/url-constant";
 import { EmployeeAddModel } from "../models/employee.model";
 import { CompanyAddModel } from "../models/company.model";
+import { ProjectModel } from "../models/project.model";
+import { UserModel } from "../models/user.model";
 
 
 @Injectable({ providedIn: 'root' })
@@ -54,9 +56,30 @@ export class AdminService {
             return result;
         })
     }
-    
-    getAllProject() {        
+     getAllProject() {      
         return this.http.get<any>(ProjectURLConstants.GET_ALL_PROJECT);
     }
+    getAllRoles(){
+        return this.http.get<any>(RoleURLConstants.GET_ALL_ROLES);
+    }
+    saveProject(projectModel:ProjectModel){
+        debugger;
+        return this.http.post<any>(ProjectURLConstants.SAVE_PROJECT, projectModel)
+        .pipe(
+            map((result) =>{
+             return result;
+            })
 
+        )
+    }
+    saveUser(userModel:UserModel){
+        debugger;
+        return this.http.post<any>(USERURLConstants.SAVE_USER,userModel)
+        .pipe(
+            map((result) =>{
+                return result;
+
+            })
+        )
+    }
 }

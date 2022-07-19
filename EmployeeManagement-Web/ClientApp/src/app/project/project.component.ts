@@ -10,9 +10,8 @@ import { Router } from '@angular/router';
 export class ProjectComponent implements OnInit 
 {
   projectData: any;
-  router: any;
 
-  constructor(private adminService:AdminService) {
+  constructor(private adminService:AdminService, private router:Router) {
     this.getAllProject();
    }
 
@@ -21,16 +20,16 @@ export class ProjectComponent implements OnInit
   getAllProject(){
     this.adminService.getAllProject().subscribe((p)=>
     {
-      debugger;
-      this.projectData = p;
+       this.projectData = p;
     }
     )
   }
  editAllProjects()
  {
-  debugger;
-  this.router.navigate(["Project/edit-project"])
-
+this.router.navigate(["Project/edit-project"])
+}
+ addProject(){
+  this.router.navigate(["/admin/Project/add-project"])
  }
 }
 

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { JwtInterceptor } from './core/service/jwt.interceptor';
 import { ProjectComponent } from './project/project.component';
 import { ProjectEditComponent } from './project/project-edit/project-edit.component';
+import { ProjectAddComponent } from './project/project-add/project-add.component';
 
 
 
@@ -16,6 +17,7 @@ import { ProjectEditComponent } from './project/project-edit/project-edit.compon
     AppComponent,
     ProjectComponent,
     ProjectEditComponent,
+    ProjectAddComponent,
 
   ],
   imports: [
