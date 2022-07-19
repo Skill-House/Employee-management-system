@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class EmployeeComponent implements OnInit {
   employeeData: any;
+  isUpdateEmployee: boolean=false;
+  employeeId: number=0;
 
     constructor(private adminService: AdminService, private router: Router) {
     this.getAllEmployees();
@@ -36,4 +38,15 @@ export class EmployeeComponent implements OnInit {
     debugger;
     this.router.navigate(["admin/Employee/add-employee"]);
   }
+
+  updateEmployee(employeeId: number){
+    debugger;
+      this.employeeId=employeeId;
+      this.isUpdateEmployee=true;  
+    }
+
+    closeModelEvent() {
+      this.isUpdateEmployee = false;
+    }
+
 }
