@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JwtInterceptor } from './core/service/jwt.interceptor';
 import { ProjectComponent } from './project/project.component';
+import { ProjectEditComponent } from './project/project-edit/project-edit.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectComponent,
+    ProjectEditComponent,
   ],
   imports: [
     BrowserModule,

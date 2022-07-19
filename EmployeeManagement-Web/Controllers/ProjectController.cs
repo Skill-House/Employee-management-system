@@ -27,11 +27,11 @@ namespace EmployeeManagement_Web.Controllers
             return await projectBusiness.GetAllProjectsAsync();
         }
 
-        [HttpGet("GetProject")]
+        [HttpGet("GetProject/{projectId}")]
         public async Task<IActionResult> GetById(int projectId)
         {
-            var alumnus = await projectBusiness.GetProjectAsync(projectId);
-            return Ok(alumnus);
+            var project = await projectBusiness.GetProjectAsync(projectId);
+            return Ok(project);
         }
 
         [HttpPost("SaveProject")]
@@ -45,7 +45,7 @@ namespace EmployeeManagement_Web.Controllers
         {
             return await projectBusiness.UpdateProjectAsync(project);
         }
-        [HttpDelete("DeleteProject")]
+        [HttpDelete("{projectId}")]
         public async Task<IActionResult> DeleteById(int projectId)
         {
             var alumnus = await projectBusiness.DeleteProjectAsync(projectId);
