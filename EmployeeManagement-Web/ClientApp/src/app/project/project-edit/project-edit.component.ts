@@ -1,12 +1,10 @@
-<<<<<<< HEAD
+
 import { Component, OnInit } from '@angular/core';
-=======
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminComponent } from 'src/app/admin/admin.component';
 import { ProjectEditModel } from 'src/app/admin/models/project.model';
 import { AdminService } from 'src/app/admin/services/admin.service';
->>>>>>> origin/dev
 
 @Component({
   selector: 'app-project-edit',
@@ -14,15 +12,13 @@ import { AdminService } from 'src/app/admin/services/admin.service';
   styleUrls: ['./project-edit.component.css']
 })
 export class ProjectEditComponent implements OnInit {
-
-<<<<<<< HEAD
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
-=======
+
   editFormGroup!: FormGroup;
   @Input() projectId: number = 0;
   @Output() getAllProject = new EventEmitter<any>();
@@ -74,4 +70,3 @@ export class ProjectEditComponent implements OnInit {
 
 }
 
->>>>>>> origin/dev

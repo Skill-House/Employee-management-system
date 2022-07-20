@@ -22,7 +22,6 @@ export class ProjectComponent implements OnInit
   getAllProject(){
     this.adminService.getAllProject().subscribe((p)=>
     {
-<<<<<<< HEAD
        this.projectData = p;
     }
     )
@@ -35,14 +34,7 @@ this.router.navigate(["Project/edit-project"])
   this.router.navigate(["/admin/Project/add-project"])
  }
 }
-
-
-
-=======
-      this.projectData = p;
-    }
-    )
-  }
+    
 
   deleteProject(projectid: number){
     this.adminService.deleteProject(projectid).subscribe((d)=>{
@@ -59,8 +51,7 @@ this.router.navigate(["Project/edit-project"])
       this.isUpdateProject=true;
   }
 
-  closeModelEvent() {
-    this.isUpdateProject = false;
-  }
-}
->>>>>>> origin/dev
+  // closeModelEvent() {
+  //   this.isUpdateProject = false;
+  // }
+
