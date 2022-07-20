@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { first, identity } from 'rxjs';
 import { EmployeeAddModel } from '../../models/employee.model';
 import { AdminService } from '../../services/admin.service';
@@ -15,7 +16,7 @@ export class EmployeeAddComponent implements OnInit {
   employeeAddModel!: EmployeeAddModel;
   date !: Date;
   companyData: any ;
-  constructor(private adminService: AdminService, private formBuilder: FormBuilder) {
+  constructor(private adminService: AdminService, private formBuilder: FormBuilder,private router: Router) {
     this.getAllCompanies();
   }
 
@@ -62,6 +63,7 @@ export class EmployeeAddComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.router.navigate(['/admin/Empolyee']);
           var employeeDetails = data;
           debugger;
         }
@@ -76,4 +78,5 @@ export class EmployeeAddComponent implements OnInit {
       this.companyData = c;
   })
   }
+
 }
