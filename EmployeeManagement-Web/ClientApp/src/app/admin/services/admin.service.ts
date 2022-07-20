@@ -84,7 +84,7 @@ export class AdminService {
     }
 
     getEmployeeById(id: number): Observable<any>{
-        return this.http.get<any>(EmployeeURLConstants.GET_EMPLOYEE_BY_ID+id)
+        return this.http.get<any>(EmployeeURLConstants.GET_EMPLOYEE_BY_ID +id)
     }
     updateEmployee(employeeAddModel: EmployeeAddModel){
         return this.http.put<any>(EmployeeURLConstants.UPDATE_EMPLOYEE,employeeAddModel)
@@ -94,9 +94,9 @@ export class AdminService {
         })
     }
 }
-saveProject(projectModel: ProjectModel){
+saveProject(ProjectModel: ProjectModel){
     debugger;
-    return this.http.post<any>(ProjectURLConstants.SAVE_PROJECT, projectModel)
+    return this.http.post<any>(ProjectURLConstants.SAVE_PROJECT, ProjectModel)
         .pipe(
             map((result) => {
                 return result;
@@ -114,4 +114,8 @@ saveUser(userModel: UserModel){
             })
         )
 }
+}
+
+function saveProject(ProjectModel: typeof ProjectModel, ProjectModel: typeof ProjectModel) {
+    throw new Error("Function not implemented.");
 }

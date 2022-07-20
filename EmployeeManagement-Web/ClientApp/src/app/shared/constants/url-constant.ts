@@ -11,6 +11,7 @@ export class EmployeeURLConstants {
     static GET_ALL_EMPLOYEE  = apiUrl + '/employee/GetAllEmployee';
     static DELETE_EMPLOYEE = apiUrl + '/employee/';
     static SAVE_EMPLOYEE = apiUrl + '/employee/SaveEmployee';
+    static GET_EMPLOYEE_BY_ID: number;
 }
 export class CompanyURLConstants {
     static GET_ALL_COMPANIES = apiUrl + '/company/GetAllCompanies';

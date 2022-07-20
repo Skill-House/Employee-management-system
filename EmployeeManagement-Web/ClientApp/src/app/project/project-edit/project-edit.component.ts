@@ -1,9 +1,7 @@
-
-import { Component, OnInit } from '@angular/core';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminComponent } from 'src/app/admin/admin.component';
-import { ProjectEditModel } from 'src/app/admin/models/project.model';
+import { ProjectEditModel } from 'src/app/admin/models/projecteditmodel';
 import { AdminService } from 'src/app/admin/services/admin.service';
 
 @Component({
@@ -12,13 +10,7 @@ import { AdminService } from 'src/app/admin/services/admin.service';
   styleUrls: ['./project-edit.component.css']
 })
 export class ProjectEditComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
-
+  
   editFormGroup!: FormGroup;
   @Input() projectId: number = 0;
   @Output() getAllProject = new EventEmitter<any>();

@@ -33,7 +33,7 @@ this.router.navigate(["Project/edit-project"])
  addProject(){
   this.router.navigate(["/admin/Project/add-project"])
  }
-}
+
     
 
   deleteProject(projectid: number){
@@ -51,7 +51,7 @@ this.router.navigate(["Project/edit-project"])
       this.isUpdateProject=true;
   }
 
-  // closeModelEvent() {
-  //   this.isUpdateProject = false;
-  // }
-
+       closeModelEvent() {
+      this.isUpdateProject = false;
+   }
+}
