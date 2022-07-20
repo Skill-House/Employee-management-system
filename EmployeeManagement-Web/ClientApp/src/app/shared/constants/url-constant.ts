@@ -6,12 +6,14 @@ export class LoginURLConstants {
 }
 export class USERURLConstants {
     static GETALL = apiUrl + '/user/GetAllUser';
+    static SAVE_USER= apiUrl + '/user/SaveUser';
 }
 export class EmployeeURLConstants {
     static GET_ALL_EMPLOYEE  = apiUrl + '/employee/GetAllEmployee';
     static DELETE_EMPLOYEE = apiUrl + '/employee/';
     static SAVE_EMPLOYEE = apiUrl + '/employee/SaveEmployee';
-    static GET_EMPLOYEE_BY_ID: number;
+    static GET_EMPLOYEE_BY_ID = apiUrl + '/employee/GetEmployee/';
+    static UPDATE_EMPLOYEE = apiUrl + '/employee/UpdateEmployee';
 }
 export class CompanyURLConstants {
     static GET_ALL_COMPANIES = apiUrl + '/company/GetAllCompanies';

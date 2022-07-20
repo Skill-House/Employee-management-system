@@ -5,9 +5,9 @@ import { EmployeeURLConstants, RoleURLConstants, USERURLConstants } from "src/ap
 import { CompanyURLConstants, ProjectURLConstants } from "src/app/shared/constants/url-constant";
 import { EmployeeAddModel } from "../models/employee.model";
 import { CompanyAddModel } from "../models/company.model";
-import { ProjectEditModel } from "../models/project.model";
 import { ProjectModel } from "../models/project.model";
 import { UserModel } from "../models/user.model";
+import { ProjectEditModel } from "../models/projecteditmodel";
 
 
 
@@ -56,7 +56,7 @@ export class AdminService {
         return this.http.get<any>(CompanyURLConstants.GET_COMPANY_BY_ID + id)
     }
     updateCompany(companyModel: CompanyAddModel) {
-        
+
         return this.http.put<any>(CompanyURLConstants.UPDATE_COMPANY, companyModel)
             .toPromise()
             .then((result) => {
@@ -86,6 +86,7 @@ export class AdminService {
     getEmployeeById(id: number): Observable<any>{
         return this.http.get<any>(EmployeeURLConstants.GET_EMPLOYEE_BY_ID +id)
     }
+   
     updateEmployee(employeeAddModel: EmployeeAddModel){
         return this.http.put<any>(EmployeeURLConstants.UPDATE_EMPLOYEE,employeeAddModel)
         .toPromise()
@@ -93,7 +94,8 @@ export class AdminService {
             return result;
         })
     }
-}
+   
+    
 saveProject(ProjectModel: ProjectModel){
     debugger;
     return this.http.post<any>(ProjectURLConstants.SAVE_PROJECT, ProjectModel)
@@ -114,8 +116,5 @@ saveUser(userModel: UserModel){
             })
         )
 }
-}
 
-function saveProject(ProjectModel: typeof ProjectModel, ProjectModel: typeof ProjectModel) {
-    throw new Error("Function not implemented.");
 }
