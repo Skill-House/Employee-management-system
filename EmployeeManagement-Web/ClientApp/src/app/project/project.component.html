@@ -17,10 +17,14 @@
           </div>
         </div>
       </div>
-  
+      <div class=" form-group pull-right top_search">
+        <button type="button" (click)="addProject()">Add Project Details</button>
+       </div>
+     
       <div class="clearfix"></div>
   
       <div class="row">
+
        
       <app-project-edit *ngIf="isUpdateProject"
         [projectId]="projectId"
@@ -28,8 +32,7 @@
         (getAllProject)="getAllProject()"></app-project-edit>
     
         <div class="clearfix"></div>
-  
-        <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
               <h2>Table design <small>Custom design</small></h2>
@@ -72,15 +75,16 @@
                   </thead>
   
                   <tbody>
-  
                     <tr *ngFor = "let project of projectData" class="even pointer">
                       <td class=" ">{{project.projectId}}</td>
                       <td class=" ">{{project.projectName}}</td>
                       <td class=" ">{{project.projectDescription}}</td>
-                      <td class=" ">{{project.projectduration}}</td>
-                        <td class=" last"><button (click)="updateProject(project.projectId)">Edit</button>
-                      <button (click)="deleteProject(project.projectId)">Delete</button>
-                    </tr>        
+                      <td class=" ">{{project.projectDuration}}</td>
+                     <td class=" last"><button (click)="updateProject(project.projectId)">Edit</button>
+                        <button (click)="deleteProject(project.projectId)">Delete</button>      
+                      </td>
+                    </tr>
+                  
                   </tbody>
                 </table>
               </div>

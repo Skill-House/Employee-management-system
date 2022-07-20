@@ -1,11 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Observable } from "rxjs";
-import { EmployeeURLConstants } from "src/app/shared/constants/url-constant";
+import { EmployeeURLConstants, RoleURLConstants, USERURLConstants } from "src/app/shared/constants/url-constant";
 import { CompanyURLConstants, ProjectURLConstants } from "src/app/shared/constants/url-constant";
 import { EmployeeAddModel } from "../models/employee.model";
 import { CompanyAddModel } from "../models/company.model";
-import { ProjectEditModel } from "../models/project.model";
+import { ProjectModel } from "../models/project.model";
+import { UserModel } from "../models/user.model";
+import { ProjectEditModel } from "../models/projecteditmodel";
+
 
 
 @Injectable({ providedIn: 'root' })
@@ -53,7 +56,7 @@ export class AdminService {
         return this.http.get<any>(CompanyURLConstants.GET_COMPANY_BY_ID + id)
     }
     updateCompany(companyModel: CompanyAddModel) {
-        
+
         return this.http.put<any>(CompanyURLConstants.UPDATE_COMPANY, companyModel)
             .toPromise()
             .then((result) => {
@@ -63,6 +66,9 @@ export class AdminService {
 
     getAllProject() {
         return this.http.get<any>(ProjectURLConstants.GET_ALL_PROJECT);
+    }
+    getAllRoles() {
+        return this.http.get<any>(RoleURLConstants.GET_ALL_ROLES);
     }
 
     getProjectById(projectId: number): Observable<any> {
@@ -78,8 +84,9 @@ export class AdminService {
     }
 
     getEmployeeById(id: number): Observable<any>{
-        return this.http.get<any>(EmployeeURLConstants.GET_EMPLOYEE_BY_ID+id)
+        return this.http.get<any>(EmployeeURLConstants.GET_EMPLOYEE_BY_ID +id)
     }
+   
     updateEmployee(employeeAddModel: EmployeeAddModel){
         return this.http.put<any>(EmployeeURLConstants.UPDATE_EMPLOYEE,employeeAddModel)
         .toPromise()
@@ -87,4 +94,27 @@ export class AdminService {
             return result;
         })
     }
+   
+    
+saveProject(ProjectModel: ProjectModel){
+    debugger;
+    return this.http.post<any>(ProjectURLConstants.SAVE_PROJECT, ProjectModel)
+        .pipe(
+            map((result) => {
+                return result;
+            })
+
+        )
+}
+saveUser(userModel: UserModel){
+    debugger;
+    return this.http.post<any>(USERURLConstants.SAVE_USER, userModel)
+        .pipe(
+            map((result) => {
+                return result;
+
+            })
+        )
+}
+
 }

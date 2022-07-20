@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#nullable disable
+
+
 namespace Empolyee_Mangement.Data.Models
 {
     public class EmployeeViewModel

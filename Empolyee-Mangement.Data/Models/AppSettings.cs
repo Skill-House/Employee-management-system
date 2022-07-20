@@ -1,4 +1,7 @@
 ﻿namespace Empolyee_Mangement.Data.Models
+
+#nullable disable
+
 {
     public class AppSettings
     {

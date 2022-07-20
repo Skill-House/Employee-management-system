@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin/services/admin.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent implements OnInit 
+{
   projectData: any;
   isUpdateProject: boolean = false;
   projectId: number = 0;
 
-
-  constructor(private adminService:AdminService) {
+  constructor(private adminService:AdminService, private router:Router) {
     this.getAllProject();
    }
 
@@ -22,10 +22,19 @@ export class ProjectComponent implements OnInit {
   getAllProject(){
     this.adminService.getAllProject().subscribe((p)=>
     {
-      this.projectData = p;
+       this.projectData = p;
     }
     )
   }
+ editAllProjects()
+ {
+this.router.navigate(["Project/edit-project"])
+}
+ addProject(){
+  this.router.navigate(["/admin/Project/add-project"])
+ }
+
+    
 
   deleteProject(projectid: number){
     this.adminService.deleteProject(projectid).subscribe((d)=>{
@@ -42,7 +51,7 @@ export class ProjectComponent implements OnInit {
       this.isUpdateProject=true;
   }
 
-  closeModelEvent() {
-    this.isUpdateProject = false;
-  }
+       closeModelEvent() {
+      this.isUpdateProject = false;
+   }
 }

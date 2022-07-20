@@ -14,12 +14,13 @@ namespace EmployeeManagement_Repository
             {
                 options.UseSqlServer(appsettings.ConnectionString);
             });
-            //serviceCollection.AddDbContext<EmployeeManagementContext>();
+            serviceCollection.AddDbContext<EmployeeManagementContext>();
             serviceCollection.AddTransient<IUserRepository, UserRepository>();
             serviceCollection.AddTransient<IUserRoleRepository, UserRoleRepository>();
             serviceCollection.AddTransient<CompanyRepository>();
             serviceCollection.AddTransient<EmployeeRepository>();
             serviceCollection.AddTransient<ProjectRepository>();
+            serviceCollection.AddTransient<RolesRepository>();
         }
     }
 }

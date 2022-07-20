@@ -1,8 +1,8 @@
+export class ProjectEditModel {
 
-export class ProjectModel {
-    projectId?: number = 0;
+    projectId?: number ;
     projectName: string = "";
     projectDescription: string = "";
     projectDuration: number = 0;
-
+    
 }
