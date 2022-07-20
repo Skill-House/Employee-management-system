@@ -33,9 +33,18 @@ namespace EmployeeManagement_Business
             return HttpStatusCode.OK;
 
         }
-        public async Task<HttpStatusCode> UpdateEmployeeAsync(Employee employee)
+        public async Task<HttpStatusCode> UpdateEmployeeAsync(EmployeeAddModel employee)
         {
-            await employeeRepository.Update(employee);
+            var emp = new Employee();
+            emp.Id = (int)employee.Id;
+            emp.FirstName = employee.FirstName;
+            emp.LastName = employee.LastName;
+            emp.Email = employee.Email;
+            emp.Phone = employee.Phone;
+            emp.CompanyId = employee.CompanyId;
+            emp.Gender = employee.Gender;            
+            emp.DateModified = employee.DateModified;
+            await employeeRepository.Update(emp);
             return HttpStatusCode.OK;
 
         }

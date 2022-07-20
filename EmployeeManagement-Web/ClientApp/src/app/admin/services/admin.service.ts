@@ -77,4 +77,14 @@ export class AdminService {
             })
     }
 
+    getEmployeeById(id: number): Observable<any>{
+        return this.http.get<any>(EmployeeURLConstants.GET_EMPLOYEE_BY_ID+id)
+    }
+    updateEmployee(employeeAddModel: EmployeeAddModel){
+        return this.http.put<any>(EmployeeURLConstants.UPDATE_EMPLOYEE,employeeAddModel)
+        .toPromise()
+        .then((result)=>{
+            return result;
+        })
+    }
 }

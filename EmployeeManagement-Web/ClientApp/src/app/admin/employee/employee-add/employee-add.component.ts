@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { first, identity } from 'rxjs';
 import { EmployeeAddModel } from '../../models/employee.model';
 import { AdminService } from '../../services/admin.service';
 
@@ -13,8 +14,10 @@ export class EmployeeAddComponent implements OnInit {
   submitted: boolean = false;
   saveEmployeeForm !: FormGroup;
   employeeAddModel!: EmployeeAddModel;
-  constructor(private adminService: AdminService, private formBuilder: FormBuilder) {
-
+  date !: Date;
+  companyData: any ;
+  constructor(private adminService: AdminService, private formBuilder: FormBuilder,private router: Router) {
+    this.getAllCompanies();
   }
 
   ngOnInit(): void {
@@ -24,10 +27,9 @@ export class EmployeeAddComponent implements OnInit {
       gender: ["", Validators.required],
       companyName: ["", Validators.required],
       email: ["", Validators.required],
-      phone: ["", Validators.required],
-      dateCreated: ["", Validators.required],
-      dateModified: ["", Validators.required]
+      phone: ["", Validators.required]
     });
+    this.date = new Date(); 
   }
 
   get f(): {
@@ -45,12 +47,12 @@ export class EmployeeAddComponent implements OnInit {
       const companyId = parseInt(this.saveEmployeeForm.controls['companyName'].value);
       const email = this.saveEmployeeForm.controls['email'].value;
       const phone = this.saveEmployeeForm.controls['phone'].value;
-      const dateCreated = this.saveEmployeeForm.controls['dateCreated'].value;
-      const dateModified = this.saveEmployeeForm.controls['dateModified'].value;
+      const dateCreated = String(this.date.getFullYear()+'-'+(this.date.getUTCMonth()+1)+'-'+this.date.getUTCDate());
+      const dateModified = String(this.date.getFullYear()+'-'+(this.date.getUTCMonth()+1)+'-'+this.date.getDate());
       this.employeeAddModel = {
         firstName: fname,
         lastName: lname,
-        gender: "male",
+        gender: gender,
         companyId: companyId,
         email: email,
         phone: phone,
@@ -61,10 +63,20 @@ export class EmployeeAddComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.router.navigate(['/admin/Empolyee']);
           var employeeDetails = data;
           debugger;
         }
       )
     }
   }
+
+  getAllCompanies()
+  {
+    this.adminService.GetAllCompanies().subscribe((c)=>
+    {
+      this.companyData = c;
+  })
+  }
+
 }

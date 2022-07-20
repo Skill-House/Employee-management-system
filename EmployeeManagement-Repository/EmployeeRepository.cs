@@ -19,11 +19,17 @@ namespace EmployeeManagement_Repository
 
         public async Task Update(Employee employee)
         {
-            var existingAmployee = dbContext.Employees.Where(h => h.Id == employee.Id).FirstOrDefault();
-            if (existingAmployee != null)
+            var existingEmployee = dbContext.Employees.Where(h => h.Id == employee.Id).FirstOrDefault();
+            if (existingEmployee != null)
             {
-                existingAmployee.FirstName = employee.FirstName; // update only changeable properties
-                await this.dbContext.SaveChangesAsync();
+                existingEmployee.FirstName = employee.FirstName; // update only changeable properties
+                existingEmployee.LastName = employee.LastName;
+                existingEmployee.Gender = employee.Gender;
+                existingEmployee.Email = employee.Email;
+                existingEmployee.DateModified = employee.DateModified;
+                existingEmployee.Phone = employee.Phone;
+                existingEmployee.CompanyId = employee.CompanyId;
+                 await this.dbContext.SaveChangesAsync();
             }
         }
 
