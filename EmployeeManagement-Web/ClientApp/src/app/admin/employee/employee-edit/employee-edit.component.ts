@@ -14,7 +14,7 @@ export class EmployeeEditComponent implements OnInit {
  @Input() companyId: number=0;
  date !: Date;
  @Input()employeeId: number=0;
- @Output() getAllEmployee= new EventEmitter<any>();
+ @Output() getAllEmployees= new EventEmitter<any>();
  @Output() closeModelEvent= new EventEmitter<any>();
 
   constructor(private adminService: AdminService, private formBuilder: FormBuilder) {
@@ -65,7 +65,7 @@ editEmployee(){
   }
     this.adminService.updateEmployee(employeeAddModel).then((data)=>{
       console.log("Updated Successfully")
-      this.getAllEmployee.emit();
+      this.getAllEmployees.emit();
       this.closeModelEvent.emit();
     },
     (error)=>{

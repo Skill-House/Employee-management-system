@@ -30,11 +30,17 @@
                         <div class="row">
                         <div class="column">
                           <label for="name">First Name<span>*</span></label>
-                          <input id="fname" formControlName="fname" type="text" />
-                        </div>
+                          <input id="fname" formControlName="fname" type="text" pattern="[a-zA-z]*"/>                         
+                           <span class="msg" *ngIf="saveEmployeeForm.controls['fname'].invalid" >
+                            Please enter Firstname (Character only)
+                           </span> 
+                        </div>                                                                    
                         <div class="column">
                           <label for="name">Last Name<span>*</span></label>
-                          <input id="lname"  formControlName="lname" type="text" name="lname"/>
+                          <input id="lname"  formControlName="lname" type="text" name="lname" pattern="[a-zA-z]*"/>
+                          <span class="msg" *ngIf="saveEmployeeForm.controls['lname'].invalid">
+                            Please enter Lastname (Character only)
+                           </span> 
                         </div>
                       </div>
                         <div class="row">
@@ -43,29 +49,42 @@
                               <input type="radio" formControlName="gender" value="male" id="radio_1" name="gender"/>
                               <label for="radio_1" class="radio"><span>Male</span></label>
                               <input  type="radio" formControlName="gender" value="female" id="radio_2" name="gender"/>
-                              <label for="radio_2" class="radio"><span>Female</span></label>                           
+                              <label for="radio_2" class="radio"><span>Female</span></label><br>
+                              <span class="msg" *ngIf="!saveEmployeeForm.controls['gender'].value">
+                                Please enter Gender Details
+                               </span>                            
                           </div>             
                         <div class="column">
                           <label for="name">Company name <span>*</span></label>                          
                           <select class="item" formControlName="companyName">
                             <option *ngFor="let company of companyData" [value]="company.companyId">{{company.companyName}}</option>
                           </select>
+                          <span class="msg" *ngIf="!saveEmployeeForm.controls['companyName'].value">
+                            Please enter Company-Name
+                           </span> 
                         </div>
                       </div>
                       <div class="row">
                         <div class="column">
                           <label for="email">Email Address<span>*</span></label>
                           <input id="email" formControlName="email" type="email" name="email" />
+                          <span class="msg" *ngIf="saveEmployeeForm.controls['email'].invalid">
+                            Please enter Email
+                           </span> 
                         </div>                   
                         <div class="column">
                           <label for="phone">Phone<span>*</span></label>
-                          <input id="phone" formControlName="phone" type="text" name="phone" />
+                          <input id="phone" formControlName="phone" type="text" name="phone" pattern="[+]?[0-9]*" />
+                          <span class="msg" *ngIf="saveEmployeeForm.controls['phone'].invalid">
+                            Please enter Phone Number
+                           </span> 
                         </div>
                       </div>
                         <div class="btn-block">
-                          <button class="btn btn-primary btn-lg" type="submit" href="/">SUBMIT</button>
+                          <button class="btn btn-primary btn-lg" type="submit" href="/" [disabled]="!saveEmployeeForm.valid">SUBMIT</button>
                           <button class="btn btn-primary btn-lg" type="reset" href="/">RESET</button>
                         </div>
+                        
                       </form>
               </div>
           </div>
