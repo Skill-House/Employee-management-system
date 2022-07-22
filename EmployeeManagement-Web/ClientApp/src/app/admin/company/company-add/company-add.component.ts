@@ -4,6 +4,10 @@ import { CompanyAddModel } from '../../models/company.model';
 import { first } from 'rxjs';
 import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
+
+declare var NgForm:any;
 
 @Component({
   selector: 'app-company-add',
@@ -16,7 +20,8 @@ export class CompanyAddComponent implements OnInit {
   saveCompanyForm !: FormGroup;
   companyAddModel!: CompanyAddModel;
 
-  constructor(private adminService:AdminService, private formBuilder: FormBuilder, private router: Router) { }
+
+  constructor(private adminService:AdminService, private formBuilder: FormBuilder, private router: Router, private location:Location) { }
 
   ngOnInit(): void {
 
@@ -54,4 +59,20 @@ export class CompanyAddComponent implements OnInit {
       )
 }
   }
+
+
+  get fval() {
+    return this.saveCompanyForm.controls;
+    }
+
+    signup(){
+      this.submitted = true;
+      if (this.saveCompanyForm.invalid) {
+      return;
+      }
+      }
+
+      back(){
+        this.location.back()
+      }
 }

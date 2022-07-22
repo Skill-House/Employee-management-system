@@ -1,34 +1,53 @@
 <div class="right_col" role="main">
   <div class="">
     <div class="page-title">
-      
       <div class="title_left">
-        <h1>Add Company</h1>
+        <h3>Add Company <small></small></h3>
       </div>
 
+
+
+
+      <div class="clearfix"></div>
+<div class="container">
+      <div class="row">
+      <div class="col-md-4 offset-md-2">
+        <div style = "position:fixed; left:100px; top:20px;"></div>
+      <form [formGroup]="saveCompanyForm" (ngSubmit)="createCompany()">
+      <div class="formbox">
+      <div class="form-group">
+      <input type="text" formControlName="cname" class="form-control" placeholder="Company Name" [ngClass]="{ 'is-invalid': submitted && fval['cname'].errors }"/>
+      <div *ngIf="submitted && fval['cname'].errors" class="invalid-feedback">
+      <div class="msg"  *ngIf="fval['cname'].errors?.['required']">Company Name is required </div>
+                                                            
       </div>
+      </div>
+      <div class="form-group">
+      <input type="text" formControlName="address" class="form-control" placeholder="Company Address" [ngClass]="{ 'is-invalid': submitted && fval['address'].errors }" />
+      <div *ngIf="submitted && fval['address'].errors" class="invalid-feedback">
+      <div class="msg" *ngIf="fval['address'].errors?.['required']">  Company Address is required</div>
+      </div>
+      </div>
+       
+      <div class="form-group">
+      <input type="text" formControlName="phone" class="form-control" placeholder="Phone Number" maxlength="12" [ngClass]="{ 'is-invalid': submitted && fval['phone'].invalid }" pattern="[0-9]*" />
+      <div *ngIf="submitted && fval['phone'].errors" class="invalid-feedback">
+        <div class="msg" *ngIf="saveCompanyForm.controls['phone'].invalid">
+          Please enter the Phone Number(Number only)
+        </div> 
+      </div>
+    </div> 
     </div>
-
-
-<div>
-        <form [formGroup]="saveCompanyForm" (ngSubmit)="createCompany()" name="myForm">                    
-          <section>
-              <div>
-                <input type="text" formControlName="cname" ng-model="cname" class="form-control" placeholder="Company Name" required ="" />
-              </div>
-              <div>
-                <input type="text" formControlName="address" class="form-control" placeholder="Company Address" required="" />
-              </div>
-              <div>
-                <input type="text" formControlName="phone"class="form-control" placeholder="Phone Number" required minlength="9" />
-              </div>
-              <div>
-                <button type="submit" class = "btn-primary"> Submit </button>
-                <button type="reset" class = "btn-secondary">Reset</button>
-              </div>
-              </section>
-              </form>
+      <div class="form-group">
+      <button type="submit" class="btn-primary" style="margin-top:10px; margin-left:21px;"> Add </button>
+      <div style="display: flex;float:right;">
+      <button type="reset" class = "btn-secondary">Reset</button>
+      <button class = "back" type="back" (click)="back()" >Back</button>
       </div>
       
+      </div>
+    
+      </form>
+    
 
   
