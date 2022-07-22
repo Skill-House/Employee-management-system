@@ -1,53 +1,53 @@
 <div class="right_col" role="main">
-    <div class="">
-      <div class="page-title">
-        <div class="title_left">
-          <h3>Tables <small></small></h3>
-        </div>
-  
-        <div class="title_right">
-          <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-              </span>
-            </div>
-          </div>
-        </div>
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Add Company <small></small></h3>
       </div>
-  
+
+
+
+
       <div class="clearfix"></div>
-  
+<div class="container">
       <div class="row">
-        <div class="clearfix"></div>
-  
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="x_panel">
-              <div class="table-responsive">
-                    <div class="testbox">
-                      <form [formGroup]="saveCompanyForm" (ngSubmit)="createCompany()">                    
-                        <div class="item">
-                          <label for="cname">Company Name<span>*</span></label>
-                          <input id="cname" formControlName="cname" type="text" />
-                        </div>
-                        <div class="item">
-                          <label for="address">Company Address<span>*</span></label>
-                          <input id="address"  formControlName="address" type="text" name="address"/>
-                        </div>                  
-                        <div class="item">
-                          <label for="phone">Company Phone<span>*</span></label>
-                          <input id="phone" formControlName="phone" type="text" name="phone" />
-                        </div>
-                        <div class="btn-block">
-                          <button class="btn btn-primary btn-lg" type="submit" href="/">SUBMIT</button>
-                          <button class="btn btn-primary btn-lg" type="reset" href="/">RESET</button>
-                        </div>
-                      </form>
-              </div>
-          </div>
-        </div>
+      <div class="col-md-4 offset-md-2">
+        <div style = "position:fixed; left:100px; top:20px;"></div>
+      <form [formGroup]="saveCompanyForm" (ngSubmit)="createCompany()">
+      <div class="formbox">
+      <div class="form-group">
+      <input type="text" formControlName="cname" class="form-control" placeholder="Company Name" [ngClass]="{ 'is-invalid': submitted && fval['cname'].errors }"/>
+      <div *ngIf="submitted && fval['cname'].errors" class="invalid-feedback">
+      <div class="msg"  *ngIf="fval['cname'].errors?.['required']">Company Name is required </div>
+                                                            
       </div>
+      </div>
+      <div class="form-group">
+      <input type="text" formControlName="address" class="form-control" placeholder="Company Address" [ngClass]="{ 'is-invalid': submitted && fval['address'].errors }" />
+      <div *ngIf="submitted && fval['address'].errors" class="invalid-feedback">
+      <div class="msg" *ngIf="fval['address'].errors?.['required']">  Company Address is required</div>
+      </div>
+      </div>
+       
+      <div class="form-group">
+      <input type="text" formControlName="phone" class="form-control" placeholder="Phone Number" maxlength="12" [ngClass]="{ 'is-invalid': submitted && fval['phone'].invalid }" pattern="[0-9]*" />
+      <div *ngIf="submitted && fval['phone'].errors" class="invalid-feedback">
+        <div class="msg" *ngIf="saveCompanyForm.controls['phone'].invalid">
+          Please enter the Phone Number(Number only)
+        </div> 
+      </div>
+    </div> 
     </div>
-  </div>
+      <div class="form-group">
+      <button type="submit" class="btn-primary" style="margin-top:10px; margin-left:21px;"> Add </button>
+      <div style="display: flex;float:right;">
+      <button type="reset" class = "btn-secondary">Reset</button>
+      <button class = "back" type="back" (click)="back()" >Back</button>
+      </div>
+      
+      </div>
+    
+      </form>
+    
+
   
