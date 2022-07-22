@@ -24,8 +24,9 @@
   
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
-              <div class="table-responsive">
-                    <div class="testbox">
+            <div class="table-responsive">
+              <h1 id="addEmployeeHeading">ADD EMPLOYEE</h1>
+              <div class="testbox">
                       <form [formGroup]="saveEmployeeForm" (ngSubmit)="saveEmployee()">                    
                         <div class="row">
                         <div class="column">
@@ -57,6 +58,7 @@
                         <div class="column">
                           <label for="name">Company name <span>*</span></label>                          
                           <select class="item" formControlName="companyName">
+                            <option value="" selected disabled>Please enter Company Name</option>
                             <option *ngFor="let company of companyData" [value]="company.companyId">{{company.companyName}}</option>
                           </select>
                           <span class="msg" *ngIf="!saveEmployeeForm.controls['companyName'].value">

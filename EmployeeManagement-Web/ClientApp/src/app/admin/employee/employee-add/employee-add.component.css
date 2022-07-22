@@ -11,20 +11,13 @@
                       color: #666;
                       line-height: 22px;
                       }
-                      h1 {
-                      position: absolute;
-                      margin: 0;
-                      font-size: 40px;
-                      color: #fff;
-                      z-index: 2;
-                      line-height: 83px;
-                    }
+                  
                       .testbox {
                       display: flex;
                       justify-content: center;
                       align-items: center;
                       height: inherit;
-                      padding: 20px;
+                      
                       }
                       form {
                       width: 100%;
@@ -185,3 +178,7 @@
                       margin-top:15px;
                       color:red;
                             }
+                  #addEmployeeHeading{
+                   padding-left: 3%; 
+                   padding-top: 2%;
+                  }
