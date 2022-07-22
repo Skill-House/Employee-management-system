@@ -52,19 +52,16 @@
               <input type="password" class="form-control" formControlName="password"placeholder="Password" required=""  id="passWord" />
             </div>
             
-               <!-- <select formControlName="roles" id="roles">
-                <option *ngFor="let role of roleData; let i = index" [value]="role.roleId">
-                  {{role.roleName}}
-                </option>
-              </select>
-           -->
-           <select class="item" formControlName="roleName">
+            <select class="form-control" formControlName="roleName" >
+              <option value="" disabled selected hidden>Select</option>
             <option *ngFor="let role of roleData" [value]="role.roleId">{{role.roleName}}</option>
           </select>
             <div>
-              <button class="btn btn-default submit" type="submit">Submit</button>
-              <button class="btn btn-primary btn-lg" type="reset" href="/">RESET</button>
-              <button class="btn btn-primary btn-lg" type="back" onclick="history.back()" href="/">Back</button>
+              <div class="btn-float-left">
+                <button class="btn btn-primary submit" type="submit">Submit</button>
+              <button class="btn btn-secondary " type="reset" href="/">RESET</button>
+            </div>
+              <button class="btn btn-back " type="back" onclick="history.back()" href="/">Back</button>
             </div>
            
 
