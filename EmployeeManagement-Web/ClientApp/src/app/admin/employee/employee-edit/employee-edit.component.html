@@ -13,9 +13,10 @@
             <input type="radio" formControlName="gender" value="male" id="radio_1" name="gender"/><label>Male</label>
             <input  type="radio" formControlName="gender" value="female" id="radio_2" name="gender"/><label>Female</label>
         </div>
-        <div>
+        <div >
             <label for="name">Company name <span>*</span></label>                          
             <select class="form-control" formControlName="companyName">
+            <option value="" selected disabled>Please enter Company Name</option>
             <option *ngFor="let company of companyData" [value]="company.companyId">{{company.companyName}}</option>
             </select> 
         </div>
